@@ -4,7 +4,10 @@ module.exports = function(Collection) {
     const globalFunctions = require('../globalFunctions')(Collection);
 
     Collection.create = function(data, cb) {
-        this.app.getCollectionContractInstance().create(data.uniqueId.replace(/-/g, ''), data.teacherAddress, data.type, data.activityHash, data.academicGyan, data.nonAcademicGyan, data.assessmentRuleKeys, data.assessmentRuleValues, data.topics)
+        this.app.getCollectionContractInstance()
+            .then(collectionContractInstance => {
+                return collectionContractInstance.create(data.uniqueId.replace(/-/g, ''), data.teacherAddress, data.type, data.activityHash, data.academicGyan, data.nonAcademicGyan, data.assessmentRuleKeys, data.assessmentRuleValues, data.topics);
+            })
             .then(function(result) {
                 console.log('Add collection to blockchain: ' + result);
                 cb(null, result);
@@ -20,7 +23,10 @@ module.exports = function(Collection) {
         if (data.scholarshipId && data.scholarshipId.length > 0) {
             scholarshipId = data.scholarshipId;
         }
-        this.app.getCollectionContractInstance().join(id.replace(/-/g, ''), fk, scholarshipId.replace(/-/g, ''))
+        this.app.getCollectionContractInstance()
+            .then(collectionContractInstance => {
+                return collectionContractInstance.join(id.replace(/-/g, ''), fk, scholarshipId.replace(/-/g, ''));
+            })
             .then(function(result) {
                 console.log('Recorded participation on blockchain ' + result);
                 cb(null, result);
@@ -32,7 +38,10 @@ module.exports = function(Collection) {
     };
 
     Collection.assess = function(id, fk, data, cb) {
-        this.app.getCollectionContractInstance().assess(id.replace(/-/g, ''), fk, data.assessmentResult)
+        this.app.getCollectionContractInstance()
+            .then(collectionContractInstance => {
+                return collectionContractInstance.assess(id.replace(/-/g, ''), fk, data.assessmentResult);
+            })
             .then(function(result) {
                 console.log('Recorded assessment on blockchain: ' + result);
                 cb(null, result);
@@ -44,7 +53,10 @@ module.exports = function(Collection) {
     };
 
     Collection.fetch = function(id, cb) {
-        this.app.getCollectionContractInstance().getData(id.replace(/-/g, ''))
+        this.app.getCollectionContractInstance()
+            .then(collectionContractInstance => {
+                return collectionContractInstance.getData(id.replace(/-/g, ''));
+            })
             .then(function(result) {
                 console.log('Got collection from blockchain: ' + result);
                 cb(null, Collection.toAsciiResult(result));
@@ -56,7 +68,10 @@ module.exports = function(Collection) {
     };
 
     Collection.fetchPeers = function(id, cb) {
-        this.app.getCollectionContractInstance().getParticipants(id.replace(/-/g, ''))
+        this.app.getCollectionContractInstance()
+            .then(collectionContractInstance => {
+                return collectionContractInstance.getParticipants(id.replace(/-/g, ''));
+            })
             .then(function(result) {
                 console.log('Got peers of collection: ' + result);
                 cb(null, Collection.toAsciiResult(result));
@@ -68,7 +83,10 @@ module.exports = function(Collection) {
     };
 
     Collection.fetchPeerResult = function(id, fk, cb) {
-        this.app.getCollectionContractInstance().getResultOf(id.replace(/-/g, ''), fk)
+        this.app.getCollectionContractInstance()
+            .then(collectionContractInstance => {
+                return collectionContractInstance.getResultOf(id.replace(/-/g, ''), fk);
+            })
             .then(function(result) {
                 console.log('Got peers of collection: ' + result);
                 cb(null, result);
@@ -80,7 +98,10 @@ module.exports = function(Collection) {
     };
 
     Collection.dropPeer = function(id, fk, cb) {
-        this.app.getCollectionContractInstance().drop(id.replace(/-/g, ''), fk)
+        this.app.getCollectionContractInstance()
+            .then(collectionContractInstance => {
+                return collectionContractInstance.drop(id.replace(/-/g, ''), fk);
+            })
             .then(function(result) {
                 console.log('Removed peer from collection: ' + result);
                 cb(null, result);

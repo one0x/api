@@ -2,10 +2,13 @@
 
 module.exports = function(Karma) {
     Karma.getBalance = function(id, cb) {
-        this.app.getKarmaContractInstance().balanceOf(id)
+        this.app.getKarmaContractInstance()
+            .then(karmaContractInstance => {
+                return karmaContractInstance.balanceOf(id);
+            })
             .then(function(result) {
                 console.log('Got karma balance: ' + result);
-                cb(null, result);
+                cb(null, Karma.app.web3.utils.toDecimal(result));
             })
             .catch(err => {
                 console.error(err);

@@ -27,6 +27,21 @@ exports = module.exports = function(app) {
             });
     }
 
+    function unlockAndReturn(cb) {
+        return new Promise(function(resolve, reject) {
+            console.log('Unlocking account: ' + app.get('blockProducerAddress'));
+            web3.eth.personal.unlockAccount(app.get('blockProducerAddress'), app.get('blockProducerPassword'))
+                .then(res => {
+                    console.log(res);
+                    resolve(cb);
+                })
+                .catch(err => {
+                    console.error(err);
+                    reject(err);
+                });
+        });
+    }
+
     function loadContracts() {
         unlockAccount();
         // Collection Contract
@@ -119,18 +134,18 @@ exports = module.exports = function(app) {
     }
 
     app.getCollectionContractInstance = function() {
-        return collectionContractInstance;
+        return unlockAndReturn(collectionContractInstance);
     };
 
     app.getKarmaContractInstance = function() {
-        return karmaContractInstance;
+        return unlockAndReturn(karmaContractInstance);
     };
 
     app.getGyanContractInstance = function() {
-        return gyanContractInstance;
+        return unlockAndReturn(gyanContractInstance);
     };
 
     app.getScholarshipContractInstance = function() {
-        return scholarshipContractInstance;
+        return unlockAndReturn(scholarshipContractInstance);
     };
 };

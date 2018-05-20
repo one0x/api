@@ -4,7 +4,10 @@ module.exports = function(Scholarship) {
     const globalFunctions = require('../globalFunctions')(Scholarship);
 
     Scholarship.create = function(data, cb) {
-        this.app.getScholarshipContractInstance().create(data.uniqueId.replace(/-/g, ''), data.ownerAddress, data.type, data.title, data.description, data.preRequisite, data.transactionLimit, data.walletAddress, data.allowedCollections)
+        this.app.getScholarshipContractInstance()
+            .then(schContractInst => {
+                return schContractInst.create(data.uniqueId.replace(/-/g, ''), data.ownerAddress, data.type, data.title, data.description, data.preRequisite, data.transactionLimit, data.walletAddress, data.allowedCollections);
+            })
             .then(function(result) {
                 console.log('Add scholarship to blockchain: ' + result);
                 cb(null, result);
@@ -16,7 +19,10 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.join = function(id, fk, data, cb) {
-        this.app.getScholarshipContractInstance().join(id.replace(/-/g, ''), fk)
+        this.app.getScholarshipContractInstance()
+            .then(schContractInst => {
+                return schContractInst.join(id.replace(/-/g, ''), fk);
+            })
             .then(function(result) {
                 console.log('Recorded scholarship participation on blockchain ' + result);
                 cb(null, result);
@@ -28,7 +34,10 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.fetch = function(id, cb) {
-        this.app.getScholarshipContractInstance().getScholarshipData(id.replace(/-/g, ''))
+        this.app.getScholarshipContractInstance()
+            .then(schContractInst => {
+                return schContractInst.getScholarshipData(id.replace(/-/g, ''));
+            })
             .then(function(result) {
                 console.log('Got scholarship from blockchain: ' + result);
                 cb(null, Scholarship.toAsciiResult(result));
@@ -40,7 +49,10 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.fetchPeer = function(id, fk, cb) {
-        this.app.getScholarshipContractInstance().getParticipants(id.replace(/-/g, ''), fk)
+        this.app.getScholarshipContractInstance()
+            .then(schContractInst => {
+                return schContractInst.getParticipants(id.replace(/-/g, ''), fk);
+            })
             .then(function(result) {
                 console.log('Got peer of scholarship: ' + result);
                 cb(null, Scholarship.toAsciiResult(result));
@@ -52,7 +64,10 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.fetchCollection = function(id, fk, cb) {
-        this.app.getScholarshipContractInstance().getAllowedCollection(id.replace(/-/g, ''), fk)
+        this.app.getScholarshipContractInstance()
+            .then(schContractInst => {
+                return schContractInst.getAllowedCollection(id.replace(/-/g, ''), fk);
+            })
             .then(function(result) {
                 console.log('Got allowed collection of scholarship: ' + result);
                 cb(null, result);
@@ -64,7 +79,10 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.addCollection = function(id, fk, data, cb) {
-        this.app.getScholarshipContractInstance().addCollection(id.replace(/-/g, ''), fk)
+        this.app.getScholarshipContractInstance()
+            .then(schContractInst => {
+                return schContractInst.addCollection(id.replace(/-/g, ''), fk);
+            })
             .then(function(result) {
                 console.log('Added allowed collection to scholarship: ' + result);
                 cb(null, result);
@@ -76,10 +94,13 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.fetchBalance = function(id, cb) {
-        this.app.getScholarshipContractInstance().balanceOf(id.replace(/-/g, ''))
+        this.app.getScholarshipContractInstance()
+            .then(schContractInst => {
+                return schContractInst.balanceOf(id.replace(/-/g, ''));
+            })
             .then(function(result) {
                 console.log('Got Karma balance of scholarship: ' + result);
-                cb(null, result);
+                cb(null, Scholarship.app.web3.utils.toDecimal(result));
             })
             .catch(err => {
                 console.error(err);
@@ -88,7 +109,10 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.dropPeer = function(id, fk, cb) {
-        this.app.getScholarshipContractInstance().drop(id.replace(/-/g, ''), fk)
+        this.app.getScholarshipContractInstance()
+            .then(schContractInst => {
+                return schContractInst.drop(id.replace(/-/g, ''), fk);
+            })
             .then(function(result) {
                 console.log('Dropped peer from scholarship: ' + result);
                 cb(null, result);

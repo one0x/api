@@ -19,7 +19,6 @@
     },
     "cors": false
   },
-  "blockProducerAddress": "0xe2ddc19a6e3834f82d16c04682d024f5eb74f495",
-  "blockProducerPassword": "0C6&7vvvv",
-  "globalScholarshipAddress": "0xC5fdf4076b8F3A5357c5E395ab970B5B54098Fef"
+  "blockProducerAddress": "0xd49bc6bb9ee0bf5f299b68f13448e8182bc9e68a",
+  "blockProducerPassword": "0C6&7vvvv"
 }

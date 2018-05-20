@@ -1,0 +1,25 @@
+{
+  "restApiRoot": "/",
+  "host": "0.0.0.0",
+  "port": 5000,
+  "remoting": {
+    "context": false,
+    "rest": {
+      "handleErrors": false,
+      "normalizeHttpPath": false,
+      "xml": false
+    },
+    "json": {
+      "strict": false,
+      "limit": "100kb"
+    },
+    "urlencoded": {
+      "extended": true,
+      "limit": "100kb"
+    },
+    "cors": false
+  },
+  "blockProducerAddress": "0xe2ddc19a6e3834f82d16c04682d024f5eb74f495",
+  "blockProducerPassword": "0C6&7vvvv",
+  "globalScholarshipAddress": "0xC5fdf4076b8F3A5357c5E395ab970B5B54098Fef"
+}

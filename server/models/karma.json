@@ -1,0 +1,40 @@
+{
+  "name": "karma",
+  "plural": "karma",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "uniqueId": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "symbol": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "totalSupply": {
+      "type": "number",
+      "id": true,
+      "required": true
+    },
+    "balance": {
+      "type": "number",
+      "id": true,
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

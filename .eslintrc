@@ -1,0 +1,7 @@
+{
+    "extends": "loopback",
+    "rules": {
+        "max-len":[2, 500, 4],
+        "indent":[2,4]
+    }
+}

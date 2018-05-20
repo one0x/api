@@ -1,0 +1,53 @@
+{
+  "name": "scholarship",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "uniqueId": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "ownerAddress": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "preRequisite": {
+      "type": "number",
+      "required": true
+    },
+    "transactionLimit": {
+      "type": "number",
+      "required": true
+    },
+    "walletAddress": {
+      "type": "string",
+      "required": true
+    },
+    "allowedCollections": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -51,7 +51,7 @@ module.exports = function(Scholarship) {
     Scholarship.fetchPeer = function(id, fk, cb) {
         this.app.getScholarshipContractInstance()
             .then(schContractInst => {
-                return schContractInst.getParticipants(id.replace(/-/g, ''), fk);
+                return schContractInst.getParticipant(id.replace(/-/g, ''), fk);
             })
             .then(function(result) {
                 console.log('Got peer of scholarship: ' + result);
@@ -222,7 +222,7 @@ module.exports = function(Scholarship) {
                 {arg: 'fk', type: 'string', required: true, description: 'Ethereum address of the peer to be dropped'},
             ],
             returns: {arg: 'result', type: 'object', root: true},
-            http: {verb: 'delete', path: '/:id/peers/:fk'},
+            http: {verb: 'delete', path: '/:id/peers/rel/:fk'},
         }
     );
 };

@@ -198,7 +198,7 @@ module.exports = function(Collection) {
                 {arg: 'fk', type: 'string', required: true, description: 'Ethereum address of the peer to be dropped'},
             ],
             returns: {arg: 'result', type: 'object', root: true},
-            http: {verb: 'delete', path: '/:id/peers/:fk'},
+            http: {verb: 'delete', path: '/:id/peers/rel/:fk'},
         }
     );
 };

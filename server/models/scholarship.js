@@ -9,7 +9,8 @@ module.exports = function(Scholarship) {
                 return schContractInst.create(data.uniqueId.replace(/-/g, ''), data.ownerAddress, data.type, data.title, data.description, data.preRequisite, data.transactionLimit, data.walletAddress, data.allowedCollections);
             })
             .then(function(result) {
-                console.log('Add scholarship to blockchain: ' + result);
+                console.log('Add scholarship to blockchain:');
+                console.log(result);
                 cb(null, result);
             })
             .catch(err => {
@@ -24,7 +25,8 @@ module.exports = function(Scholarship) {
                 return schContractInst.join(id.replace(/-/g, ''), fk);
             })
             .then(function(result) {
-                console.log('Recorded scholarship participation on blockchain ' + result);
+                console.log('Recorded scholarship participation on blockchain ');
+                console.log(result);
                 cb(null, result);
             })
             .catch(err => {
@@ -39,7 +41,8 @@ module.exports = function(Scholarship) {
                 return schContractInst.getScholarshipData(id.replace(/-/g, ''));
             })
             .then(function(result) {
-                console.log('Got scholarship from blockchain: ' + result);
+                console.log('Got scholarship from blockchain: ');
+                console.log(result);
                 cb(null, Scholarship.toAsciiResult(result));
             })
             .catch(err => {
@@ -54,7 +57,8 @@ module.exports = function(Scholarship) {
                 return schContractInst.getParticipant(id.replace(/-/g, ''), fk);
             })
             .then(function(result) {
-                console.log('Got peer of scholarship: ' + result);
+                console.log('Got peer of scholarship: ');
+                console.log(result);
                 cb(null, Scholarship.toAsciiResult(result));
             })
             .catch(err => {
@@ -69,7 +73,8 @@ module.exports = function(Scholarship) {
                 return schContractInst.getAllowedCollection(id.replace(/-/g, ''), fk);
             })
             .then(function(result) {
-                console.log('Got allowed collection of scholarship: ' + result);
+                console.log('Got allowed collection of scholarship: ');
+                console.log(result);
                 cb(null, result);
             })
             .catch(err => {
@@ -84,7 +89,8 @@ module.exports = function(Scholarship) {
                 return schContractInst.addCollection(id.replace(/-/g, ''), fk);
             })
             .then(function(result) {
-                console.log('Added allowed collection to scholarship: ' + result);
+                console.log('Added allowed collection to scholarship: ');
+                console.log(result);
                 cb(null, result);
             })
             .catch(err => {
@@ -99,7 +105,8 @@ module.exports = function(Scholarship) {
                 return schContractInst.balanceOf(id.replace(/-/g, ''));
             })
             .then(function(result) {
-                console.log('Got Karma balance of scholarship: ' + result);
+                console.log('Got Karma balance of scholarship: ');
+                console.log(result);
                 cb(null, Scholarship.app.web3.utils.toDecimal(result));
             })
             .catch(err => {
@@ -114,7 +121,8 @@ module.exports = function(Scholarship) {
                 return schContractInst.drop(id.replace(/-/g, ''), fk);
             })
             .then(function(result) {
-                console.log('Dropped peer from scholarship: ' + result);
+                console.log('Dropped peer from scholarship: ');
+                console.log(result);
                 cb(null, result);
             })
             .catch(err => {

@@ -1,28 +1,63 @@
 'use strict';
 
-var loopback = require('loopback');
-var boot = require('loopback-boot');
+let loopback = require('loopback');
+let boot = require('loopback-boot');
 
-var app = module.exports = loopback();
-var path = require('path');
-var https = require('https');
-var http = require('http');
-var sslConfig = require('./ssl-config');
-var bodyParser = require('body-parser');
+let app = module.exports = loopback();
+let path = require('path');
+let https = require('https');
+let http = require('http');
+let sslConfig = require('./ssl-config');
+let bodyParser = require('body-parser');
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 app.middleware('parse', bodyParser.json({limit: '50mb'}));
 // to support URL-encoded bodies
 app.middleware('parse', bodyParser.urlencoded({limit: '50mb', extended: true}));
+
+// Setup the view engine (jade)
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+app.post('/contact', function(req, res, next) {
+    if (req.body.name && req.body.email) {
+        console.log('Email received from : ' + req.body.email);
+        // Send welcome email to user
+        let message = {
+            name: req.body.name,
+            email: req.body.email,
+            message: req.body.message,
+        };
+        let renderer = loopback.template(path.resolve(__dirname, 'views/contactEmail.ejs'));
+        let htmlBody = renderer(message);
+        loopback.Email.send({
+            to: app.get('adminEmail'),
+            from: 'PB Protocol <noreply@mx.peerbuds.com>',
+            subject: 'New contact from: ' + req.body.name,
+            html: htmlBody,
+        })
+            .then(function(response) {
+                console.log('email sent! - ' + response);
+            })
+            .catch(function(err) {
+                console.log('email error! - ' + err);
+            });
+        res.json({
+            result: 'Success',
+        });
+    } else {
+        res.json(500, {
+            result: 'No email received',
+        });
+    }
+});
 
 app.start = function(httpOnly) {
     if (httpOnly === undefined) {
         httpOnly = process.env.HTTP;
     }
-    var server = null;
+    let server = null;
     if (!httpOnly) {
-        var options = {
+        let options = {
             key: sslConfig.privateKey,
             cert: sslConfig.certificate,
         };
@@ -32,12 +67,12 @@ app.start = function(httpOnly) {
     }
     // start the web server
     server.listen(app.get('port'), function() {
-        var baseUrl = (httpOnly ? 'http://' : 'https://') + app.get('host') + ':' + app.get('port');
+        let baseUrl = (httpOnly ? 'http://' : 'https://') + app.get('host') + ':' + app.get('port');
         app.emit('started', baseUrl);
         console.log('Web server listening at: %s', baseUrl);
 
         if (app.get('loopback-component-explorer')) {
-            var explorerPath = app.get('loopback-component-explorer').mountPath;
+            let explorerPath = app.get('loopback-component-explorer').mountPath;
             console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
         }
     });

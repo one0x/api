@@ -1,5 +1,5 @@
 {
-    "restApiRoot": "/",
+    "restApiRoot": "/v1",
     "host": "0.0.0.0",
     "port": 5000,
     "remoting": {
@@ -23,5 +23,6 @@
         "protocol": "https"
     },
     "blockProducerAddress": "0x742ba4f0cd93b3b7876a54ef10838973ebadcf49",
-    "blockProducerPassword": "0C6&7vvvv"
+    "blockProducerPassword": "0C6&7vvvv",
+    "adminEmail": "aakash@peerbuds.com"
 }

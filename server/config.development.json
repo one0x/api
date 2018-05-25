@@ -1,24 +1,25 @@
 {
-  "restApiRoot": "/",
-  "host": "0.0.0.0",
-  "port": 5000,
-  "remoting": {
-    "context": false,
-    "rest": {
-      "handleErrors": false,
-      "normalizeHttpPath": false,
-      "xml": false
+    "restApiRoot": "/v1",
+    "host": "0.0.0.0",
+    "port": 5000,
+    "remoting": {
+        "context": false,
+        "rest": {
+            "handleErrors": false,
+            "normalizeHttpPath": false,
+            "xml": false
+        },
+        "json": {
+            "strict": false,
+            "limit": "100kb"
+        },
+        "urlencoded": {
+            "extended": true,
+            "limit": "100kb"
+        },
+        "cors": false
     },
-    "json": {
-      "strict": false,
-      "limit": "100kb"
-    },
-    "urlencoded": {
-      "extended": true,
-      "limit": "100kb"
-    },
-    "cors": false
-  },
-  "blockProducerAddress": "0xd49bc6bb9ee0bf5f299b68f13448e8182bc9e68a",
-  "blockProducerPassword": "0C6&7vvvv"
+    "blockProducerAddress": "0xd49bc6bb9ee0bf5f299b68f13448e8182bc9e68a",
+    "blockProducerPassword": "0C6&7vvvv",
+    "adminEmail": "aakash@peerbuds.com"
 }

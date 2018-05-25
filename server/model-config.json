@@ -1,40 +1,43 @@
 {
-  "_meta": {
-    "sources": [
-      "loopback/common/models",
-      "loopback/server/models",
-      "../common/models",
-      "./models"
-    ],
-    "mixins": [
-      "loopback/common/mixins",
-      "loopback/server/mixins",
-      "../common/mixins",
-      "./mixins"
-    ]
-  },
-  "collection": {
-    "dataSource": null,
-    "public": true
-  },
-  "karma": {
-    "dataSource": null,
-    "public": true
-  },
-  "gyan": {
-    "dataSource": null,
-    "public": true
-  },
-  "peer": {
-    "dataSource": null,
-    "public": true
-  },
-  "scholarship": {
-    "dataSource": null,
-    "public": true
-  },
-  "util": {
-    "dataSource": null,
-    "public": true
-  }
+    "_meta": {
+        "sources": [
+            "loopback/common/models",
+            "loopback/server/models",
+            "../common/models",
+            "./models"
+        ],
+        "mixins": [
+            "loopback/common/mixins",
+            "loopback/server/mixins",
+            "../common/mixins",
+            "./mixins"
+        ]
+    },
+    "Email": {
+        "dataSource": "mailgun"
+    },
+    "collection": {
+        "dataSource": null,
+        "public": true
+    },
+    "karma": {
+        "dataSource": null,
+        "public": true
+    },
+    "gyan": {
+        "dataSource": null,
+        "public": true
+    },
+    "peer": {
+        "dataSource": null,
+        "public": true
+    },
+    "scholarship": {
+        "dataSource": null,
+        "public": true
+    },
+    "util": {
+        "dataSource": null,
+        "public": true
+    }
 }

@@ -1,1 +1,8 @@
-{}
+{
+    "mailgun": {
+        "name": "mailgun",
+        "connector": "loopback-connector-mailgun",
+        "apikey": "key-138d95c6c3d15a9eceac97ca86c41201",
+        "domain": "mx.peerbuds.com"
+    }
+}

@@ -16,6 +16,33 @@ module.exports = function(Gyan) {
             });
     };
 
+    Gyan.karmaToBurn = function(amount, cb) {
+        this.app.getCollectionContractInstance()
+            .then(collectionContractInstance => {
+                return collectionContractInstance.getKarmaToBurn(amount);
+            })
+            .then(function(result) {
+                console.log('Got amount of Karma to burn: ' + result);
+                cb(null, Gyan.app.web3.utils.toDecimal(result));
+            })
+            .catch(err => {
+                console.error(err);
+                cb(err);
+            });
+    };
+
+    Gyan.remoteMethod(
+        'karmaToBurn',
+        {
+            description: 'Get the Karma to burn for the amount of Gyan',
+            accepts: [
+                {arg: 'amount', type: 'number', required: true, description: 'Amount of Gyan'},
+            ],
+            returns: {arg: 'result', type: 'object', root: true},
+            http: {verb: 'get', path: '/:amount/karma'},
+        }
+    );
+
     Gyan.remoteMethod(
         'getBalance',
         {

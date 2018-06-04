@@ -19,7 +19,7 @@
         },
         "cors": false
     },
-    "blockProducerAddress": "0xd49bc6bb9ee0bf5f299b68f13448e8182bc9e68a",
+    "blockProducerAddress": "0x1d706c32bca48231e561726ec584b1476eb49192",
     "blockProducerPassword": "0C6&7vvvv",
     "adminEmail": "aakash@peerbuds.com"
 }

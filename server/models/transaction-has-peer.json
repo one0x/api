@@ -1,0 +1,39 @@
+{
+  "name": "transaction_has_peer",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "neo4j": {
+    "sourceModel": "transactions",
+    "targetModel": "protocol_peer"
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true
+    },
+    "sourceId": {
+      "type": "string"
+    },
+    "targetId": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "transaction": {
+      "type": "belongsTo",
+      "model": "transactions",
+      "foreignKey": "sourceId"
+    },
+    "peer": {
+      "type": "belongsTo",
+      "model": "protocol_peer",
+      "foreignKey": "targetId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

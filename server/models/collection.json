@@ -19,9 +19,12 @@
       "type": "string",
       "required": true
     },
-    "activityHash": {
+    "learningHours": {
       "type": "string",
       "required": true
+    },
+    "activityHash": {
+      "type": "string"
     },
     "academicGyan": {
       "type": "number",
@@ -40,6 +43,12 @@
     "assessmentRuleValues": {
       "type": [
         "number"
+      ],
+      "required": true
+    },
+    "nonAcademicRules": {
+      "type": [
+        "string"
       ],
       "required": true
     },

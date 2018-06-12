@@ -1,0 +1,35 @@
+{
+    "name": "answer",
+    "base": "Model",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "properties": {
+        "uniqueId": {
+            "type": "string",
+            "id": true
+        },
+        "peerAddress": {
+            "type": "string",
+            "required": true
+        },
+        "hash": {
+            "type": "string",
+            "required": true
+        },
+        "status": {
+            "type": "boolean",
+            "default": false
+        },
+        "flag": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "validations": [],
+    "relations": {
+    },
+    "acls": [],
+    "methods": {}
+}

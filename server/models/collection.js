@@ -6,11 +6,28 @@ module.exports = function(Collection) {
     Collection.create = function(data, cb) {
         this.app.getCollectionContractInstance()
             .then(collectionContractInstance => {
-                return collectionContractInstance.create(data.uniqueId.replace(/-/g, ''), data.teacherAddress, data.type, data.activityHash, data.academicGyan, data.nonAcademicGyan, data.assessmentRuleKeys, data.assessmentRuleValues, data.topics);
+                return collectionContractInstance.create(data.uniqueId.replace(/-/g, ''), data.teacherAddress, data.type, data.learningHours, data.academicGyan, data.nonAcademicGyan, data.assessmentRuleKeys, data.assessmentRuleValues, data.nonAcademicRules, data.topics);
             })
             .then(function(result) {
-                console.log('Add collection to blockchain: ' + result);
-                cb(null, result);
+                // index this transaction result and link it to its peer
+                const transaction = {
+                    result: JSON.stringify(result),
+                };
+                Collection.app.models.transactions.create(transaction, function(err, transactionInstance) {
+                    if (err) {
+                        cb(err);
+                    } else {
+                        transactionInstance.peer.add(data.teacherAddress, function(err, peerInstance) {
+                            if (err) {
+                                cb(err);
+                            } else {
+                                console.log('Add collection to blockchain: ');
+                                console.log(result);
+                                cb(null, result);
+                            }
+                        });
+                    }
+                });
             })
             .catch(err => {
                 console.error(err);
@@ -28,8 +45,25 @@ module.exports = function(Collection) {
                 return collectionContractInstance.join(id.replace(/-/g, ''), fk, scholarshipId.replace(/-/g, ''));
             })
             .then(function(result) {
-                console.log('Recorded participation on blockchain ' + result);
-                cb(null, result);
+                // index this transaction result and link it to its peer
+                const transaction = {
+                    result: JSON.stringify(result),
+                };
+                Collection.app.models.transactions.create(transaction, function(err, transactionInstance) {
+                    if (err) {
+                        cb(err);
+                    } else {
+                        transactionInstance.peer.add(fk, function(err, peerInstance) {
+                            if (err) {
+                                cb(err);
+                            } else {
+                                console.log('Recorded participation on blockchain: ');
+                                console.log(result);
+                                cb(null, result);
+                            }
+                        });
+                    }
+                });
             })
             .catch(err => {
                 console.error(err);
@@ -40,11 +74,28 @@ module.exports = function(Collection) {
     Collection.assess = function(id, fk, data, cb) {
         this.app.getCollectionContractInstance()
             .then(collectionContractInstance => {
-                return collectionContractInstance.assess(id.replace(/-/g, ''), fk, data.assessmentResult);
+                return collectionContractInstance.assess(id.replace(/-/g, ''), fk, data.assessmentResult, data.engagementResult, data.commitmentResult);
             })
             .then(function(result) {
-                console.log('Recorded assessment on blockchain: ' + result);
-                cb(null, result);
+                // index this transaction result and link it to its peer
+                const transaction = {
+                    result: JSON.stringify(result),
+                };
+                Collection.app.models.transactions.create(transaction, function(err, transactionInstance) {
+                    if (err) {
+                        cb(err);
+                    } else {
+                        transactionInstance.peer.add(fk, function(err, peerInstance) {
+                            if (err) {
+                                cb(err);
+                            } else {
+                                console.log('Recorded assessment on blockchain: ');
+                                console.log(result);
+                                cb(null, result);
+                            }
+                        });
+                    }
+                });
             })
             .catch(err => {
                 console.error(err);
@@ -103,8 +154,25 @@ module.exports = function(Collection) {
                 return collectionContractInstance.drop(id.replace(/-/g, ''), fk);
             })
             .then(function(result) {
-                console.log('Removed peer from collection: ' + result);
-                cb(null, result);
+                // index this transaction result and link it to its peer
+                const transaction = {
+                    result: JSON.stringify(result),
+                };
+                Collection.app.models.transactions.create(transaction, function(err, transactionInstance) {
+                    if (err) {
+                        cb(err);
+                    } else {
+                        transactionInstance.peer.add(fk, function(err, peerInstance) {
+                            if (err) {
+                                cb(err);
+                            } else {
+                                console.log('Removed peer from collection: ');
+                                console.log(result);
+                                cb(null, result);
+                            }
+                        });
+                    }
+                });
             })
             .catch(err => {
                 console.error(err);

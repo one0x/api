@@ -9,9 +9,25 @@ module.exports = function(Scholarship) {
                 return schContractInst.create(data.uniqueId.replace(/-/g, ''), data.ownerAddress, data.type, data.title, data.description, data.preRequisite, data.transactionLimit, data.walletAddress, data.allowedCollections);
             })
             .then(function(result) {
-                console.log('Add scholarship to blockchain:');
-                console.log(result);
-                cb(null, result);
+                // index this transaction result and link it to its peer
+                const transaction = {
+                    result: JSON.stringify(result),
+                };
+                Scholarship.app.models.transactions.create(transaction, function(err, transactionInstance) {
+                    if (err) {
+                        cb(err);
+                    } else {
+                        transactionInstance.peer.add(data.ownerAddress, function(err, peerInstance) {
+                            if (err) {
+                                cb(err);
+                            } else {
+                                console.log('Add scholarship to blockchain:');
+                                console.log(result);
+                                cb(null, result);
+                            }
+                        });
+                    }
+                });
             })
             .catch(err => {
                 console.error(err);
@@ -25,9 +41,25 @@ module.exports = function(Scholarship) {
                 return schContractInst.join(id.replace(/-/g, ''), fk);
             })
             .then(function(result) {
-                console.log('Recorded scholarship participation on blockchain ');
-                console.log(result);
-                cb(null, result);
+                // index this transaction result and link it to its peer
+                const transaction = {
+                    result: JSON.stringify(result),
+                };
+                Scholarship.app.models.transactions.create(transaction, function(err, transactionInstance) {
+                    if (err) {
+                        cb(err);
+                    } else {
+                        transactionInstance.peer.add(fk, function(err, peerInstance) {
+                            if (err) {
+                                cb(err);
+                            } else {
+                                console.log('Recorded scholarship participation on blockchain ');
+                                console.log(result);
+                                cb(null, result);
+                            }
+                        });
+                    }
+                });
             })
             .catch(err => {
                 console.error(err);
@@ -121,9 +153,25 @@ module.exports = function(Scholarship) {
                 return schContractInst.drop(id.replace(/-/g, ''), fk);
             })
             .then(function(result) {
-                console.log('Dropped peer from scholarship: ');
-                console.log(result);
-                cb(null, result);
+                // index this transaction result and link it to its peer
+                const transaction = {
+                    result: JSON.stringify(result),
+                };
+                Scholarship.app.models.transactions.create(transaction, function(err, transactionInstance) {
+                    if (err) {
+                        cb(err);
+                    } else {
+                        transactionInstance.peer.add(fk, function(err, peerInstance) {
+                            if (err) {
+                                cb(err);
+                            } else {
+                                console.log('Dropped peer from scholarship: ');
+                                console.log(result);
+                                cb(null, result);
+                            }
+                        });
+                    }
+                });
             })
             .catch(err => {
                 console.error(err);

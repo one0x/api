@@ -12,7 +12,7 @@ exports = module.exports = function(app) {
 
     app.web3 = web3;
 
-    let collectionContractInstance, karmaContractInstance, gyanContractInstance, scholarshipContractInstance;
+    let collectionContractInstance, karmaContractInstance, gyanContractInstance, scholarshipContractInstance, questionContractInstance;
 
     loadContracts();
 
@@ -131,6 +131,28 @@ exports = module.exports = function(app) {
             .catch(err => {
                 console.error(err);
             });
+
+        // Question Contract
+        const QuestionContractArtifact = require('./contracts/QuestionContract.json');
+        const QuestionContract = contract(QuestionContractArtifact);
+        QuestionContract.setProvider(web3.currentProvider);
+        if (typeof QuestionContract.currentProvider.sendAsync !== 'function') {
+            QuestionContract.currentProvider.sendAsync = function() {
+                return QuestionContract.currentProvider.send.apply(
+                    QuestionContract.currentProvider, arguments
+                );
+            };
+        }
+        QuestionContract.defaults({from: app.get('blockProducerAddress'), gas: 3000000});
+        QuestionContract.deployed()
+            .then(function(instance) {
+                console.log('got contract instance of question');
+                questionContractInstance = instance;
+                return instance;
+            })
+            .catch(err => {
+                console.error(err);
+            });
     }
 
     app.getCollectionContractInstance = function() {
@@ -147,5 +169,9 @@ exports = module.exports = function(app) {
 
     app.getScholarshipContractInstance = function() {
         return unlockAndReturn(scholarshipContractInstance);
+    };
+
+    app.getQuestionContractInstance = function() {
+        return unlockAndReturn(questionContractInstance);
     };
 };

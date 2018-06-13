@@ -61,6 +61,24 @@ module.exports = function(Karma) {
             });
     };
 
+    Karma.mintRewards = function(cb) {
+        this.app.getGyanContractInstance()
+            .then(gyanContractInstance => {
+                return gyanContractInstance.mintRewards();
+            })
+            .then(function(result) {
+                console.log('Tried minting karma rewards: ' + result);
+                cb(null, result);
+            }, err => {
+                console.error('Could not execute Karma rewards');
+                cb(err);
+            })
+            .catch(err => {
+                console.error('Could not execute Karma rewards');
+                cb(err);
+            });
+    };
+
     Karma.remoteMethod(
         'getBalance',
         {
@@ -100,6 +118,15 @@ module.exports = function(Karma) {
             ],
             returns: {arg: 'result', type: ['object'], root: true},
             http: {verb: 'get', path: '/:id/potentialRewards'},
+        }
+    );
+
+    Karma.remoteMethod(
+        'mintRewards',
+        {
+            description: 'Execute daily karma rewards minting and distribution',
+            returns: {arg: 'result', type: ['object'], root: true},
+            http: {verb: 'post', path: '/mintRewards'},
         }
     );
 };

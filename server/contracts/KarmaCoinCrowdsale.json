@@ -183,14 +183,14 @@
     "absolutePath": "/Users/aakash/WebstormProjects/pbether/contracts/KarmaCoinCrowdsale.sol",
     "exportedSymbols": {
       "KarmaCoinCrowdsale": [
-        1916
+        1932
       ]
     },
-    "id": 1917,
+    "id": 1933,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1885,
+        "id": 1901,
         "literals": [
           "solidity",
           "0.4",
@@ -202,10 +202,10 @@
       {
         "absolutePath": "zeppelin-solidity/contracts/token/ERC20/MintableToken.sol",
         "file": "zeppelin-solidity/contracts/token/ERC20/MintableToken.sol",
-        "id": 1886,
+        "id": 1902,
         "nodeType": "ImportDirective",
-        "scope": 1917,
-        "sourceUnit": 5212,
+        "scope": 1933,
+        "sourceUnit": 5228,
         "src": "25:67:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -213,10 +213,10 @@
       {
         "absolutePath": "zeppelin-solidity/contracts/crowdsale/emission/MintedCrowdsale.sol",
         "file": "zeppelin-solidity/contracts/crowdsale/emission/MintedCrowdsale.sol",
-        "id": 1887,
+        "id": 1903,
         "nodeType": "ImportDirective",
-        "scope": 1917,
-        "sourceUnit": 4593,
+        "scope": 1933,
+        "sourceUnit": 4609,
         "src": "93:76:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -224,10 +224,10 @@
       {
         "absolutePath": "zeppelin-solidity/contracts/crowdsale/validation/TimedCrowdsale.sol",
         "file": "zeppelin-solidity/contracts/crowdsale/validation/TimedCrowdsale.sol",
-        "id": 1888,
+        "id": 1904,
         "nodeType": "ImportDirective",
-        "scope": 1917,
-        "sourceUnit": 4676,
+        "scope": 1933,
+        "sourceUnit": 4692,
         "src": "170:77:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -238,17 +238,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1889,
+              "id": 1905,
               "name": "TimedCrowdsale",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4675,
+              "referencedDeclaration": 4691,
               "src": "281:14:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TimedCrowdsale_$4675",
+                "typeIdentifier": "t_contract$_TimedCrowdsale_$4691",
                 "typeString": "contract TimedCrowdsale"
               }
             },
-            "id": 1890,
+            "id": 1906,
             "nodeType": "InheritanceSpecifier",
             "src": "281:14:5"
           },
@@ -256,48 +256,48 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1891,
+              "id": 1907,
               "name": "MintedCrowdsale",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4592,
+              "referencedDeclaration": 4608,
               "src": "297:15:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_MintedCrowdsale_$4592",
+                "typeIdentifier": "t_contract$_MintedCrowdsale_$4608",
                 "typeString": "contract MintedCrowdsale"
               }
             },
-            "id": 1892,
+            "id": 1908,
             "nodeType": "InheritanceSpecifier",
             "src": "297:15:5"
           }
         ],
         "contractDependencies": [
-          4567,
-          4592,
-          4675
+          4583,
+          4608,
+          4691
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1916,
+        "id": 1932,
         "linearizedBaseContracts": [
-          1916,
-          4592,
-          4675,
-          4567
+          1932,
+          4608,
+          4691,
+          4583
         ],
         "name": "KarmaCoinCrowdsale",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 1914,
+              "id": 1930,
               "nodeType": "Block",
               "src": "540:5:5",
               "statements": []
             },
             "documentation": null,
-            "id": 1915,
+            "id": 1931,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -306,11 +306,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 1905,
+                    "id": 1921,
                     "name": "_openingTime",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1894,
+                    "referencedDeclaration": 1910,
                     "src": "478:12:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -319,11 +319,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 1906,
+                    "id": 1922,
                     "name": "_closingTime",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1896,
+                    "referencedDeclaration": 1912,
                     "src": "492:12:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -331,17 +331,17 @@
                     }
                   }
                 ],
-                "id": 1907,
+                "id": 1923,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 1904,
+                  "id": 1920,
                   "name": "TimedCrowdsale",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4675,
+                  "referencedDeclaration": 4691,
                   "src": "463:14:5",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_TimedCrowdsale_$4675_$",
+                    "typeIdentifier": "t_type$_t_contract$_TimedCrowdsale_$4691_$",
                     "typeString": "type(contract TimedCrowdsale)"
                   }
                 },
@@ -352,11 +352,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 1909,
+                    "id": 1925,
                     "name": "_rate",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1898,
+                    "referencedDeclaration": 1914,
                     "src": "516:5:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -365,11 +365,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 1910,
+                    "id": 1926,
                     "name": "_wallet",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1900,
+                    "referencedDeclaration": 1916,
                     "src": "523:7:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -378,29 +378,29 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 1911,
+                    "id": 1927,
                     "name": "_token",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1902,
+                    "referencedDeclaration": 1918,
                     "src": "532:6:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_MintableToken_$5211",
+                      "typeIdentifier": "t_contract$_MintableToken_$5227",
                       "typeString": "contract MintableToken"
                     }
                   }
                 ],
-                "id": 1912,
+                "id": 1928,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 1908,
+                  "id": 1924,
                   "name": "Crowdsale",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4567,
+                  "referencedDeclaration": 4583,
                   "src": "506:9:5",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_Crowdsale_$4567_$",
+                    "typeIdentifier": "t_type$_t_contract$_Crowdsale_$4583_$",
                     "typeString": "type(contract Crowdsale)"
                   }
                 },
@@ -411,15 +411,15 @@
             "name": "KarmaCoinCrowdsale",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1903,
+              "id": 1919,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1894,
+                  "id": 1910,
                   "name": "_openingTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1915,
+                  "scope": 1931,
                   "src": "348:20:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -428,7 +428,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1893,
+                    "id": 1909,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "348:7:5",
@@ -442,10 +442,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1896,
+                  "id": 1912,
                   "name": "_closingTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1915,
+                  "scope": 1931,
                   "src": "372:20:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -454,7 +454,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1895,
+                    "id": 1911,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "372:7:5",
@@ -468,10 +468,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1898,
+                  "id": 1914,
                   "name": "_rate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1915,
+                  "scope": 1931,
                   "src": "396:13:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -480,7 +480,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1897,
+                    "id": 1913,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "396:7:5",
@@ -494,10 +494,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1900,
+                  "id": 1916,
                   "name": "_wallet",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1915,
+                  "scope": 1931,
                   "src": "413:15:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -506,7 +506,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1899,
+                    "id": 1915,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "413:7:5",
@@ -520,26 +520,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 1902,
+                  "id": 1918,
                   "name": "_token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1915,
+                  "scope": 1931,
                   "src": "432:20:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_MintableToken_$5211",
+                    "typeIdentifier": "t_contract$_MintableToken_$5227",
                     "typeString": "contract MintableToken"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1901,
+                    "id": 1917,
                     "name": "MintableToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 5211,
+                    "referencedDeclaration": 5227,
                     "src": "432:13:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_MintableToken_$5211",
+                      "typeIdentifier": "t_contract$_MintableToken_$5227",
                       "typeString": "contract MintableToken"
                     }
                   },
@@ -551,19 +551,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1913,
+              "id": 1929,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "540:0:5"
             },
-            "scope": 1916,
+            "scope": 1932,
             "src": "316:229:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1917,
+        "scope": 1933,
         "src": "250:297:5"
       }
     ],
@@ -573,14 +573,14 @@
     "absolutePath": "/Users/aakash/WebstormProjects/pbether/contracts/KarmaCoinCrowdsale.sol",
     "exportedSymbols": {
       "KarmaCoinCrowdsale": [
-        1916
+        1932
       ]
     },
-    "id": 1917,
+    "id": 1933,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1885,
+        "id": 1901,
         "literals": [
           "solidity",
           "0.4",
@@ -592,10 +592,10 @@
       {
         "absolutePath": "zeppelin-solidity/contracts/token/ERC20/MintableToken.sol",
         "file": "zeppelin-solidity/contracts/token/ERC20/MintableToken.sol",
-        "id": 1886,
+        "id": 1902,
         "nodeType": "ImportDirective",
-        "scope": 1917,
-        "sourceUnit": 5212,
+        "scope": 1933,
+        "sourceUnit": 5228,
         "src": "25:67:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -603,10 +603,10 @@
       {
         "absolutePath": "zeppelin-solidity/contracts/crowdsale/emission/MintedCrowdsale.sol",
         "file": "zeppelin-solidity/contracts/crowdsale/emission/MintedCrowdsale.sol",
-        "id": 1887,
+        "id": 1903,
         "nodeType": "ImportDirective",
-        "scope": 1917,
-        "sourceUnit": 4593,
+        "scope": 1933,
+        "sourceUnit": 4609,
         "src": "93:76:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -614,10 +614,10 @@
       {
         "absolutePath": "zeppelin-solidity/contracts/crowdsale/validation/TimedCrowdsale.sol",
         "file": "zeppelin-solidity/contracts/crowdsale/validation/TimedCrowdsale.sol",
-        "id": 1888,
+        "id": 1904,
         "nodeType": "ImportDirective",
-        "scope": 1917,
-        "sourceUnit": 4676,
+        "scope": 1933,
+        "sourceUnit": 4692,
         "src": "170:77:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -628,17 +628,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1889,
+              "id": 1905,
               "name": "TimedCrowdsale",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4675,
+              "referencedDeclaration": 4691,
               "src": "281:14:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TimedCrowdsale_$4675",
+                "typeIdentifier": "t_contract$_TimedCrowdsale_$4691",
                 "typeString": "contract TimedCrowdsale"
               }
             },
-            "id": 1890,
+            "id": 1906,
             "nodeType": "InheritanceSpecifier",
             "src": "281:14:5"
           },
@@ -646,48 +646,48 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1891,
+              "id": 1907,
               "name": "MintedCrowdsale",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4592,
+              "referencedDeclaration": 4608,
               "src": "297:15:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_MintedCrowdsale_$4592",
+                "typeIdentifier": "t_contract$_MintedCrowdsale_$4608",
                 "typeString": "contract MintedCrowdsale"
               }
             },
-            "id": 1892,
+            "id": 1908,
             "nodeType": "InheritanceSpecifier",
             "src": "297:15:5"
           }
         ],
         "contractDependencies": [
-          4567,
-          4592,
-          4675
+          4583,
+          4608,
+          4691
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1916,
+        "id": 1932,
         "linearizedBaseContracts": [
-          1916,
-          4592,
-          4675,
-          4567
+          1932,
+          4608,
+          4691,
+          4583
         ],
         "name": "KarmaCoinCrowdsale",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 1914,
+              "id": 1930,
               "nodeType": "Block",
               "src": "540:5:5",
               "statements": []
             },
             "documentation": null,
-            "id": 1915,
+            "id": 1931,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -696,11 +696,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 1905,
+                    "id": 1921,
                     "name": "_openingTime",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1894,
+                    "referencedDeclaration": 1910,
                     "src": "478:12:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -709,11 +709,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 1906,
+                    "id": 1922,
                     "name": "_closingTime",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1896,
+                    "referencedDeclaration": 1912,
                     "src": "492:12:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -721,17 +721,17 @@
                     }
                   }
                 ],
-                "id": 1907,
+                "id": 1923,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 1904,
+                  "id": 1920,
                   "name": "TimedCrowdsale",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4675,
+                  "referencedDeclaration": 4691,
                   "src": "463:14:5",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_TimedCrowdsale_$4675_$",
+                    "typeIdentifier": "t_type$_t_contract$_TimedCrowdsale_$4691_$",
                     "typeString": "type(contract TimedCrowdsale)"
                   }
                 },
@@ -742,11 +742,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 1909,
+                    "id": 1925,
                     "name": "_rate",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1898,
+                    "referencedDeclaration": 1914,
                     "src": "516:5:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -755,11 +755,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 1910,
+                    "id": 1926,
                     "name": "_wallet",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1900,
+                    "referencedDeclaration": 1916,
                     "src": "523:7:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -768,29 +768,29 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 1911,
+                    "id": 1927,
                     "name": "_token",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1902,
+                    "referencedDeclaration": 1918,
                     "src": "532:6:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_MintableToken_$5211",
+                      "typeIdentifier": "t_contract$_MintableToken_$5227",
                       "typeString": "contract MintableToken"
                     }
                   }
                 ],
-                "id": 1912,
+                "id": 1928,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 1908,
+                  "id": 1924,
                   "name": "Crowdsale",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4567,
+                  "referencedDeclaration": 4583,
                   "src": "506:9:5",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_Crowdsale_$4567_$",
+                    "typeIdentifier": "t_type$_t_contract$_Crowdsale_$4583_$",
                     "typeString": "type(contract Crowdsale)"
                   }
                 },
@@ -801,15 +801,15 @@
             "name": "KarmaCoinCrowdsale",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1903,
+              "id": 1919,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1894,
+                  "id": 1910,
                   "name": "_openingTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1915,
+                  "scope": 1931,
                   "src": "348:20:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -818,7 +818,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1893,
+                    "id": 1909,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "348:7:5",
@@ -832,10 +832,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1896,
+                  "id": 1912,
                   "name": "_closingTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1915,
+                  "scope": 1931,
                   "src": "372:20:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -844,7 +844,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1895,
+                    "id": 1911,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "372:7:5",
@@ -858,10 +858,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1898,
+                  "id": 1914,
                   "name": "_rate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1915,
+                  "scope": 1931,
                   "src": "396:13:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -870,7 +870,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1897,
+                    "id": 1913,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "396:7:5",
@@ -884,10 +884,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1900,
+                  "id": 1916,
                   "name": "_wallet",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1915,
+                  "scope": 1931,
                   "src": "413:15:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -896,7 +896,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1899,
+                    "id": 1915,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "413:7:5",
@@ -910,26 +910,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 1902,
+                  "id": 1918,
                   "name": "_token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1915,
+                  "scope": 1931,
                   "src": "432:20:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_MintableToken_$5211",
+                    "typeIdentifier": "t_contract$_MintableToken_$5227",
                     "typeString": "contract MintableToken"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1901,
+                    "id": 1917,
                     "name": "MintableToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 5211,
+                    "referencedDeclaration": 5227,
                     "src": "432:13:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_MintableToken_$5211",
+                      "typeIdentifier": "t_contract$_MintableToken_$5227",
                       "typeString": "contract MintableToken"
                     }
                   },
@@ -941,19 +941,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1913,
+              "id": 1929,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "540:0:5"
             },
-            "scope": 1916,
+            "scope": 1932,
             "src": "316:229:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1917,
+        "scope": 1933,
         "src": "250:297:5"
       }
     ],
@@ -965,5 +965,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-06-08T09:32:41.011Z"
+  "updatedAt": "2018-06-13T12:42:42.460Z"
 }

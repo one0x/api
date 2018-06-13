@@ -196,14 +196,14 @@
     "absolutePath": "/Users/aakash/WebstormProjects/pbether/contracts/Scholarship/BaseScholarship.sol",
     "exportedSymbols": {
       "BaseScholarship": [
-        3063
+        3079
       ]
     },
-    "id": 3064,
+    "id": 3080,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3055,
+        "id": 3071,
         "literals": [
           "solidity",
           "^",
@@ -216,10 +216,10 @@
       {
         "absolutePath": "/Users/aakash/WebstormProjects/pbether/contracts/ownership/rbac/RBAC.sol",
         "file": "../ownership/rbac/RBAC.sol",
-        "id": 3056,
+        "id": 3072,
         "nodeType": "ImportDirective",
-        "scope": 3064,
-        "sourceUnit": 4274,
+        "scope": 3080,
+        "sourceUnit": 4290,
         "src": "26:36:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -227,10 +227,10 @@
       {
         "absolutePath": "/Users/aakash/WebstormProjects/pbether/contracts/ownership/PbOwnable.sol",
         "file": "../ownership/PbOwnable.sol",
-        "id": 3057,
+        "id": 3073,
         "nodeType": "ImportDirective",
-        "scope": 3064,
-        "sourceUnit": 4105,
+        "scope": 3080,
+        "sourceUnit": 4121,
         "src": "63:36:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -238,10 +238,10 @@
       {
         "absolutePath": "/Users/aakash/WebstormProjects/pbether/contracts/KarmaCoin.sol",
         "file": "../KarmaCoin.sol",
-        "id": 3058,
+        "id": 3074,
         "nodeType": "ImportDirective",
-        "scope": 3064,
-        "sourceUnit": 1884,
+        "scope": 3080,
+        "sourceUnit": 1900,
         "src": "100:26:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -252,17 +252,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3059,
+              "id": 3075,
               "name": "PbOwnable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4104,
+              "referencedDeclaration": 4120,
               "src": "327:9:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PbOwnable_$4104",
+                "typeIdentifier": "t_contract$_PbOwnable_$4120",
                 "typeString": "contract PbOwnable"
               }
             },
-            "id": 3060,
+            "id": 3076,
             "nodeType": "InheritanceSpecifier",
             "src": "327:9:9"
           },
@@ -270,38 +270,38 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3061,
+              "id": 3077,
               "name": "RBAC",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4273,
+              "referencedDeclaration": 4289,
               "src": "338:4:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_RBAC_$4273",
+                "typeIdentifier": "t_contract$_RBAC_$4289",
                 "typeString": "contract RBAC"
               }
             },
-            "id": 3062,
+            "id": 3078,
             "nodeType": "InheritanceSpecifier",
             "src": "338:4:9"
           }
         ],
         "contractDependencies": [
-          4104,
-          4273
+          4120,
+          4289
         ],
         "contractKind": "contract",
         "documentation": "@title BaseCollection\n@author Aakash Bansal @ Peerbuds Inc.\n@dev Basic version of collection contract\n@dev Handled collection create, joining and assessment",
         "fullyImplemented": true,
-        "id": 3063,
+        "id": 3079,
         "linearizedBaseContracts": [
-          3063,
-          4273,
-          4104
+          3079,
+          4289,
+          4120
         ],
         "name": "BaseScholarship",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 3064,
+        "scope": 3080,
         "src": "299:50:9"
       }
     ],
@@ -311,14 +311,14 @@
     "absolutePath": "/Users/aakash/WebstormProjects/pbether/contracts/Scholarship/BaseScholarship.sol",
     "exportedSymbols": {
       "BaseScholarship": [
-        3063
+        3079
       ]
     },
-    "id": 3064,
+    "id": 3080,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3055,
+        "id": 3071,
         "literals": [
           "solidity",
           "^",
@@ -331,10 +331,10 @@
       {
         "absolutePath": "/Users/aakash/WebstormProjects/pbether/contracts/ownership/rbac/RBAC.sol",
         "file": "../ownership/rbac/RBAC.sol",
-        "id": 3056,
+        "id": 3072,
         "nodeType": "ImportDirective",
-        "scope": 3064,
-        "sourceUnit": 4274,
+        "scope": 3080,
+        "sourceUnit": 4290,
         "src": "26:36:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -342,10 +342,10 @@
       {
         "absolutePath": "/Users/aakash/WebstormProjects/pbether/contracts/ownership/PbOwnable.sol",
         "file": "../ownership/PbOwnable.sol",
-        "id": 3057,
+        "id": 3073,
         "nodeType": "ImportDirective",
-        "scope": 3064,
-        "sourceUnit": 4105,
+        "scope": 3080,
+        "sourceUnit": 4121,
         "src": "63:36:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -353,10 +353,10 @@
       {
         "absolutePath": "/Users/aakash/WebstormProjects/pbether/contracts/KarmaCoin.sol",
         "file": "../KarmaCoin.sol",
-        "id": 3058,
+        "id": 3074,
         "nodeType": "ImportDirective",
-        "scope": 3064,
-        "sourceUnit": 1884,
+        "scope": 3080,
+        "sourceUnit": 1900,
         "src": "100:26:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -367,17 +367,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3059,
+              "id": 3075,
               "name": "PbOwnable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4104,
+              "referencedDeclaration": 4120,
               "src": "327:9:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PbOwnable_$4104",
+                "typeIdentifier": "t_contract$_PbOwnable_$4120",
                 "typeString": "contract PbOwnable"
               }
             },
-            "id": 3060,
+            "id": 3076,
             "nodeType": "InheritanceSpecifier",
             "src": "327:9:9"
           },
@@ -385,38 +385,38 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3061,
+              "id": 3077,
               "name": "RBAC",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4273,
+              "referencedDeclaration": 4289,
               "src": "338:4:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_RBAC_$4273",
+                "typeIdentifier": "t_contract$_RBAC_$4289",
                 "typeString": "contract RBAC"
               }
             },
-            "id": 3062,
+            "id": 3078,
             "nodeType": "InheritanceSpecifier",
             "src": "338:4:9"
           }
         ],
         "contractDependencies": [
-          4104,
-          4273
+          4120,
+          4289
         ],
         "contractKind": "contract",
         "documentation": "@title BaseCollection\n@author Aakash Bansal @ Peerbuds Inc.\n@dev Basic version of collection contract\n@dev Handled collection create, joining and assessment",
         "fullyImplemented": true,
-        "id": 3063,
+        "id": 3079,
         "linearizedBaseContracts": [
-          3063,
-          4273,
-          4104
+          3079,
+          4289,
+          4120
         ],
         "name": "BaseScholarship",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 3064,
+        "scope": 3080,
         "src": "299:50:9"
       }
     ],
@@ -428,5 +428,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-06-08T09:32:35.684Z"
+  "updatedAt": "2018-06-13T12:42:39.891Z"
 }

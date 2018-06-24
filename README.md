@@ -1,4 +1,4 @@
-# Peerbuds Protocol
+# one0x Open Standards
 Open APIs to record and fetch all learning and teaching efforts on a global blockchain.
 
 
@@ -15,7 +15,7 @@ There is a dire need to objectively quantify knowledge obtained from any and eve
 
 #### SOLUTION
 
-Peerbuds is a self-governed decentralised protocol that quantifies and keeps an anonymous track of every knowledge exchange using blockchain, the same technology that powers bitcoin.
+one0x is a self-governed decentralised framework that quantifies and keeps an anonymous track of every knowledge exchange using blockchain, the same technology that powers bitcoin.
 
 This knowledge is recorded in units called Gyan, the new standard unit of knowledge which is equal to at least an hour of learning in any topic.
 
@@ -49,6 +49,6 @@ An ecosystem where everyone benefits - the student, teacher and workplaces. Usin
 
 #### VISION
 
-Our vision is that educational platforms, every impactful learning institute that provides knowledge, whether it’s an online coding boot camp or a school for chefs, will join Peerbuds:  accessible, trustworthy information about everyone’s knowledge journey and impact.
+Our vision is that educational platforms, every impactful learning institute that provides knowledge, whether it’s an online coding boot camp or a school for chefs, will join one0x:  accessible, trustworthy information about everyone’s knowledge journey and impact.
 
 We are on a mission to create a network of passionate educators, learners, and institutes, and empower them with tools they need to make transparent what matters most about their students: from the source of their knowledge, to their impact on real world projects, jobs, and who they pass their knowledge on to next.

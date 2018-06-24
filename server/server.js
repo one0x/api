@@ -31,7 +31,7 @@ app.post('/contact', function(req, res, next) {
         let htmlBody = renderer(message);
         loopback.Email.send({
             to: app.get('adminEmail'),
-            from: 'PB Protocol <noreply@mx.peerbuds.com>',
+            from: 'PB Protocol <noreply@mx.one0x.com>',
             subject: 'New contact from: ' + req.body.name,
             html: htmlBody,
         })

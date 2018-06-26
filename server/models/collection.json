@@ -23,7 +23,7 @@
       "type": "string",
       "required": true
     },
-    "activityHash": {
+    "hash": {
       "type": "string"
     },
     "academicGyan": {

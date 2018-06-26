@@ -74,7 +74,7 @@ module.exports = function(Collection) {
     Collection.assess = function(id, fk, data, cb) {
         this.app.getCollectionContractInstance()
             .then(collectionContractInstance => {
-                return collectionContractInstance.assess(id.replace(/-/g, ''), fk, data.assessmentResult, data.engagementResult, data.commitmentResult);
+                return collectionContractInstance.assess(id.replace(/-/g, ''), fk, data.assessmentResult, data.engagementResult, data.commitmentResult, data.hash);
             })
             .then(function(result) {
                 // index this transaction result and link it to its peer
@@ -110,6 +110,21 @@ module.exports = function(Collection) {
             })
             .then(function(result) {
                 console.log('Got collection from blockchain: ' + result);
+                cb(null, Collection.toAsciiResult(result));
+            })
+            .catch(err => {
+                console.error(err);
+                cb(err);
+            });
+    };
+
+    Collection.fetchPeerHash = function(id, fk, cb) {
+        this.app.getCollectionContractInstance()
+            .then(collectionContractInstance => {
+                return collectionContractInstance.getHashOf(id.replace(/-/g, ''), fk);
+            })
+            .then(function(result) {
+                console.log('Got hash from blockchain: ' + result);
                 cb(null, Collection.toAsciiResult(result));
             })
             .catch(err => {
@@ -214,6 +229,19 @@ module.exports = function(Collection) {
             ],
             returns: {arg: 'result', type: ['object'], root: true},
             http: {verb: 'get', path: '/:id/peers/:fk'},
+        }
+    );
+
+    Collection.remoteMethod(
+        'fetchPeerHash',
+        {
+            description: 'Get hash of a peer in this collection',
+            accepts: [
+                {arg: 'id', type: 'string', required: true},
+                {arg: 'fk', type: 'string', required: true},
+            ],
+            returns: {arg: 'result', type: ['object'], root: true},
+            http: {verb: 'get', path: '/:id/peers/:fk/hash'},
         }
     );
 

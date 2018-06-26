@@ -1,292 +1,462 @@
-<!DOCTYPE html>
-<html lang="en-US" dir="ltr">
+<!doctype html>
+<html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--
-    Document Title
-    =============================================
-    -->
-    <title>one0x : The Open Standard For Blockchain Certificates</title>
-    <!--
-    Favicons
-    =============================================
-    -->
-      <link rel="icon" type="image/x-icon" href="assets/images/favicons/favicon.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="assets/images/favicons/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <!--
-    Stylesheets
-    =============================================
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    -->
-    <!-- Default stylesheets-->
-    <link href="assets/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Template specific stylesheets-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-    <link href="assets/lib/animate.css/animate.css" rel="stylesheet">
-    <link href="assets/lib/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/lib/et-line-font/et-line-font.css" rel="stylesheet">
-    <link href="assets/lib/flexslider/flexslider.css" rel="stylesheet">
-    <link href="assets/lib/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
-    <link href="assets/lib/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
-    <link href="assets/lib/simple-text-rotator/simpletextrotator.css" rel="stylesheet">
-    <!-- Main stylesheet and color file-->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link id="color-scheme" href="assets/css/colors/default.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <title>one0x | The Open Standard For Blockchain Certificates</title>
   </head>
-  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
-    <main>
-      <div class="page-loader">
-        <div class="loader">Loading...</div>
-      </div>
-      <nav class="navbar navbar-custom navbar-fixed-top navbar-transparent" role="navigation">
+  <body>
+
+    <!-- header start here -->
+    <header>
+
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="images/peerbuds-logo.png" alt="peerbuds-logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse right-links" id="navbarCollapse">
+                    <ul class="navbar-nav text-uppercase">
+                        <li class="nav-item ml-3 active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ml-3">
+                            <a class="nav-link" href="https://t.me/one0x">Community</a>
+                        </li>
+                        <li class="nav-item ml-3">
+                            <a class="nav-link" href="https://one0x.com/explorer">APIs</a>
+                        </li>
+                        <li class="nav-item ml-3">
+                            <a class="nav-link" href="https://github.com/one0x">
+                                <i class="fab fa-github"></i> Github
+                            </a>
+                        </li>
+                        <li class="nav-item ml-3">
+                            <a class="nav-link" href="http://blog.one0x.com">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <!-- header end here -->
+
+    <section class="home-banner">
+        <div class="dark-gray-overlay"></div>
         <div class="container">
-          <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="index.html">
-              <img src="assets/images/one0x_white.png" width="100px" style="display: inline-block; margin-right: 15px;" />
-          </a>
-          </div>
-          <div class="collapse navbar-collapse" id="custom-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="/explorer">Explore APIs</a>
-              </li>
-              <li><a href="https://one0x.docs.apiary.io/">Docs</a>
-              </li>
+            <div class="content">
+                <h1>Open Standard for <br/>Blockchain Certificates</h1>
+                <div class="lead">one0x is a self-governed decentralized standard that pre-verifies & digitizes all your learning and employment records on the blockchain
+                    using a single account that is controlled and owned by you.
+                </div>
+            </div>
+            <div class="banner-action">
+                <div class="background-container">
+                    <div class="row">
+                        <div class="col-12 col-md-8 ">
+                            <div class="content">
+                                <input type="text" id="certificateUrl" name="certificateUrl" placeholder="Certificate URL" style="border: 0; width: 100%; outline: none;" />
+                                <input type="file" id="certificateJson" name="certificateJson" accept=".json" style="font-size: 10px; margin-top: 10px;">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="action-button text-right text-uppercase">
+                                <a href="#">Verify</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid">
+        <div class="empowering-heading text-center">
+            <div class="heading-green-line"></div>
+            <h2 class="subheading">Empower your people with verifiable blockchain certificates</h2>
+        </div>
+    </section>
+
+    <section class="learner">
+        <div class="d-table wd100">
+            <div class="d-table-cell wd30">
+                <img src="images/for-learners.jpg" alt="for-learners" class="img-fluid">
+            </div>
+            <div class="d-table-cell wd70 gray-bg align-top position-relative">
+                <div class="box-content box-content-right-margin">
+                    <h2>For Learners</h2>
+                    <div class="para">
+                        Own and share your achievements
+                        <br><br>
+                        With the blockchain, your official records are now yours forever.
+                        <br>
+                        Receive them once, share and verify them for a lifetime.
+                        <br><br>
+                        <ol>
+                            <li>Signup on <a href="https://peerbuds.com">peerbuds.com</a></li>
+                            <li>Participate in classes or experiences</li>
+                            <li>Receive and Share</li>
+                        </ol>
+                    </div>
+                </div>
+                <!--<div class="box-content-right-margin learn-more text-uppercase">
+                    <a href="#">Learn More</a>
+                </div>-->
+            </div>
+        </div>
+    </section>
+
+    <section class="educators">
+        <div class="d-table wd100">
+            <div class="d-table-cell wd70 align-top position-relative">
+                <div class="box-content box-content-left-margin">
+                    <h2>For Educators</h2>
+                    <div class="para">
+                        Everything you need to issue blockchain-based certificates.
+                        <br><br>
+                        Create, issue, and manage digital certificates.
+                        <br>
+                        Empower your people with verifiable digital certificates
+                        <br><br>
+                        <ul>
+                            <li>
+                                Invite Participants
+                            </li>
+                            <li>
+                                Design Template Layouts
+                            </li>
+                            <li>
+                                Schedule Issuance
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--<div class="box-content-left-margin learn-more text-uppercase">
+                    <a href="#">Learn More</a>
+                </div>-->
+            </div>
+            <div class="d-table-cell wd30">
+                <img src="images/for-educators.jpg" alt="for-educators" class="img-fluid">
+            </div>
+        </div>
+    </section>
+
+    <section class="learner">
+        <div class="d-table wd100">
+            <div class="d-table-cell wd30">
+                <img src="images/for-employers.jpg" alt="for-employers" class="img-fluid">
+            </div>
+            <div class="d-table-cell wd70 gray-bg align-top position-relative">
+                <div class="box-content box-content-right-margin">
+                    <h2>For Employers</h2>
+                    <div class="para">
+                        Verify Anyone’s Achievements
+                        <br><br>
+                        Use the one0x Universal Verifier to independently verify certificates. This service can also be built into existing software systems for greater convenience.
+                    </div>
+                </div>
+                <!--<div class="box-content-right-margin learn-more text-uppercase">
+                    <a href="#">Learn More</a>
+                </div>-->
+            </div>
+        </div>
+    </section>
+
+    <section class="mission-vision text-center">
+        <h2>Mission and vision</h2>
+    </section>
+
+    <section class="trust-traceability">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="trust-traceability-heading">
+                        <div class="heading-green-line"></div>
+                        <h2 class="subheading">Trust and Traceability</h2>
+                        <p>Powered by mobile, blockchain and open data, our game-changing software enables educators and learners to validate learning data, track the journey and impact of their learning and empowers
+                            employers with access to verified education records.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="look-beyond-resume gray-bg position-relative">
+        <div class="point-line"></div>
+        <div class="container">
+            <div class="text-center">
+                <h2 class="subheading">Look beyond the resume</h2>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="content-box">
+                        Current indicators such as college degrees, attendance at Ivy league schools or other proxies for assessing knowledge are being replaced by reputation and performance scores.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="content-box">
+                        Its time to augment our resumes with independently verifiable information from both formal and informal learning settings - and its informal feedback.
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resume-video position-relative">
+        <div class="container">
+            <div class="video-thumb">
+                <div class="edit-icon"><img src="images/video-edit-icon.png" alt="video-edit-icon" class="img-fluid"/></div>
+                <div class="read-icon"><img src="images/video-read-icon.png" alt="video-read-icon" class="img-fluid"/></div>
+                <div class="book-icon"><img src="images/video-book-icon.png" alt="video-book-icon" class="img-fluid"/></div>
+                <div class="help-icon"><img src="images/video-help-icon.png" alt="video-help-icon" class="img-fluid"/></div>
+
+                <div class="play-icon"><img src="images/play-icon.png" alt="play-icon" class="img-fluid"/></div>
+                <img src="images/video-thumb.png" alt="video-thumb" class="img-fluid"/>
+            </div>
+        </div>
+    </section>
+
+    <section class="gyan">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="subheading">Gyan - The Knowledge Score</h2>
+                <div class="heading-green-line sm"></div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="content-box">
+                        <h2 class="big-text">All knowledge is reflected on your profile as Gyan</h2>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="content-box">
+                        <ul class="inline-style quality-list text-uppercase">
+                            <li>
+                                <img src="images/universal-icon.png" alt="universal-icon" class="float-left"/>
+                                <span>UNIVERSAL</span>
+                            </li>
+                            <li>
+                                <img src="images/trusted-icon.png" alt="trusted-icon" class="float-left"/>
+                                <span>Trusted</span>
+                            </li>
+                            <li>
+                                <img src="images/traceable-icon.png" alt="traceable-icon" class="float-left"/>
+                                <span>Traceable</span>
+                            </li>
+                        </ul>
+                        <h3 class="subheading">the new standard unit of knowledge that equals about an hour of learning and sums your knowledge score on any topic.</h3>
+                        <p>Gyan’s mission is to empower every student, learner, institution and employer with a trusted, traceable and easily shareable knowledge score. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gray-bg knowledge-story">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="image">
+                    <img src="images/knowledge-story-img.png" alt="knowledge-story-img" class="img-fluid"/>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="content">
+                    <h2>The Knowledge <br/>Story</h2>
+                    <p>Your entire education journey comes together on your knowledge story. You could be a professional coder and a  hobbyist musician, your blockchain certificates or each of these topics can be easily shared anywhere with complete privacy and control. </p>
+                    <p>No more running to college registrars or emailing companies to give your transcripts. Your knowledge story is dynamic, independently verifiable and owned by you. </p>
+                    <div class="action-button">
+                        <a href="#" class="btn theme-btn">View Sample Knowledge Stories</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="karma-knowledge-reward">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="text-left">
+                        <h2 class="subheading">Karma - The Knowledge Reward</h2>
+                        <div class="heading-green-line sm"></div>
+                    </div>
+                    <div class="content-box">
+                        <ul class="inline-style quality-list text-uppercase">
+                            <li>
+                                <img src="images/secure-icon.png" alt="secure-icon" class="float-left"/>
+                                <span>Secure</span>
+                            </li>
+                            <li>
+                                <img src="images/transferable-icon.png" alt="transferable-icon" class="float-left"/>
+                                <span>Transferable</span>
+                            </li>
+                            <li>
+                                <img src="images/valuable-icon.png" alt="valuable-icon" class="float-left"/>
+                                <span>Valuable</span>
+                            </li>
+                        </ul>
+                        <h3 class="subheading">Karma, a new digital currency, enables every Peerbuds user to get instant value for their learning and teaching.</h3>
+                        <p>With Karma you can get paid for your teaching, pay it forward for further education, hire employees or even convert it to US dollars.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <img src="images/karma-knowledge-reward.png" alt="karma-knowledge-reward" class="img-fluid"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="see-action">
+        <div class="container">
+            <div class="text-center content-center">
+                <h2 class="subheading">See it in Action</h2>
+                <div class="heading-green-line sm"></div>
+                <p>peerbuds.com is the first platform we built from the ground up to integrate peerbuds protocol. Visit the platform to learn how you can start building your knowledge story right away!</p>
+            </div>
+        </div>
+        <div class="text-center image">
+            <img src="images/action-team.png" alt="action-team" class="img-fluid"/>
+        </div>
+        <div class="action-button text-center">
+            <a href="https://peerbuds.com" class="btn theme-btn action-btn-width235">VISIT PEERBUDS.COM</a>
+        </div>
+    </section>
+
+    <section class="benefit-education gray-bg">
+        <div class="container">
+            <div class="text-center content-center">
+                <h2>Benefits of Blockchain<br>in education</h2>
+                <div class="heading-green-line sm"></div>
+                <h3 class="subheading">Blockchain technology allows for a total disintermediation and disaggregation of education.</h3>
+            </div>
+            <ul class="steps-process">
+                <li>The centralised model present day learning is no longer sustainable.</li>
+                <li>Today’s students receive an education in both formal and informal learning settings, not just traditional brick-and-mortar university lecture halls and blockchain enables equal crediting for them all.</li>
             </ul>
-          </div>
         </div>
-      </nav>
-      <section class="home-section home-parallax home-fade home-full-height bg-dark-60 agency-page-header" id="home" data-background="assets/images/agency/agency_bg.jpg">
-        <div class="titan-caption">
-          <div class="caption-content">
-            <div class="font-alt mb-30 titan-title-size-1">Empower your people with verifiable blockchain certificates</div>
-            <div class="font-alt mb-40 titan-title-size-3">
-                Your entire knowledge story on
-                <br/>
-                one <span class="rotate">account | framework | address </span>
-            </div>
-              <a class="section-scroll btn btn-border-w btn-circle" href="https://one0x.com/explorer">View APIs</a>
-          </div>
+        <div class="action-button text-center">
+            <a href="#" class="btn theme-btn action-btn-width235">View case study</a>
         </div>
-      </section>
-      <div class="main">
-        <section class="module">
-          <div class="container">
-            <div class="row multi-columns-row">
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="features-item">
-                  <div class="features-icon"><span class="icon-lightbulb"></span></div>
-                  <h3 class="features-title font-alt">Register your users</h3>Start by registering your existing and new users. This creates a unique identity for them on the blockchain - their Wallet!
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="features-item">
-                  <div class="features-icon"><span class="icon-tools"></span></div>
-                  <h3 class="features-title font-alt">Create a teaching contract</h3>When teachers create a class, record it on the chain by creating a teaching contract. All it takes is 8 variables.
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="features-item">
-                  <div class="features-icon"><span class="icon-tools-2"></span></div>
-                  <h3 class="features-title font-alt">Add participants</h3>When students join a class, add them as participants to the teaching contract. Choose if they pay for it or their scholarship.
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="features-item">
-                  <div class="features-icon"><span class="icon-lifesaver"></span></div>
-                  <h3 class="features-title font-alt">Make student assessment</h3>When teachers publish results, record them on the chain. The contract executes and everyone gets the right amount of Gyan credits for their efforts.
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="module pt-0 pb-0" id="about">
-          <div class="row position-relative m-0">
-            <div class="col-xs-12 col-md-6 side-image" data-background="assets/images/agency/about_us.jpg"></div>
-            <div class="col-xs-12 col-md-6 col-md-offset-6 side-image-text">
-              <div class="row">
-                <div class="col-sm-12">
-                  <h2 class="module-title font-alt align-left">About Us</h2>
-                  <div class="module-subtitle font-serif align-left">one0x is a self-governed decentralized framework that helps you gain control and ownership of your knowledge story.</div>
-                  <p>Whether it’s a learning experience with a teacher, an online session with a peer, a community discussion or any other source;
-                      with one0x, the right amount of information becomes part of a growing public ledger of the world’s learning and impact.
-                  </p>
-                    <p>
-                      You control who gets to see your story or what parts of it.
-                    </p>
-                    <p>
-                      Every activity is instantly validated against rules set in stone by a teacher or the community and is accessible all lifelong.
-                    </p>
-                    <p>
-                      All knowledge is reflected on your profile as Gyan - the new standard unit of knowledge that equals about an hour of learning and sums your knowledge score on any topic.
-                    </p>
-                    <p>
-                      Gyan’s mission is to empower every student, learner, institution and employer with a trusted, traceable and easily shareable knowledge score.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="module-small bg-dark">
-          <div class="container">
+    </section>
+
+    <section class="permanent-education">
+        <div class="container">
             <div class="row">
-              <div class="col-sm-6 col-md-8 col-lg-6 col-lg-offset-2">
-                <div class="callout-text font-alt">
-                  <h3 class="callout-title">Want to see it in action?</h3>
-                  <p>We have a live version of the protocol running on peerbuds platform</p>
+                <div class="col-12 col-md-5">
+                    <h2>Permanent Education Records</h2>>
                 </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="callout-btn-box"><a class="btn btn-w btn-round" href="portfolio_boxed_gutter_col_3.html">Lets view platform</a></div>
-              </div>
+                <div class="col-12 col-md-7">
+                    <p class="para">Even if the institutions that issued the certificates were to close down, or if the entire system of education collapses (as, for instance, happened in Syria), those certificates are still verifiable against the records stored in a blockchain.</p>
+                    <div class="action-button">
+                        <a href="#" class="btn theme-btn action-btn-width235">View case study</a>
+                    </div>
+                </div>
+
             </div>
-          </div>
-        </section>
-        <hr class="divider-w">
-        <section class="module" id="contact">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">Contact us</h2>
-                <div class="module-subtitle font-serif"></div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-8">
-                <form id="contactForm" role="form" method="post" action="/contact">
-                  <div class="form-group">
-                    <label class="sr-only" for="name">Name</label>
-                    <input class="form-control" type="text" id="name" name="name" placeholder="Your Name*" required="required" data-validation-required-message="Please enter your name."/>
-                    <p class="help-block text-danger"></p>
-                  </div>
-                  <div class="form-group">
-                    <label class="sr-only" for="email">Email</label>
-                    <input class="form-control" type="email" id="email" name="email" placeholder="Your Email*" required="required" data-validation-required-message="Please enter your email address."/>
-                    <p class="help-block text-danger"></p>
-                  </div>
-                  <div class="form-group">
-                    <textarea class="form-control" rows="7" id="message" name="message" placeholder="Your Message*" required="required" data-validation-required-message="Please enter your message."></textarea>
-                    <p class="help-block text-danger"></p>
-                  </div>
-                  <div class="text-center">
-                    <button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Submit</button>
-                  </div>
-                </form>
-                <div class="ajax-response font-alt" id="contactFormResponse"></div>
-              </div>
-              <div class="col-sm-4">
-                <div class="alt-features-item mt-0">
-                  <div class="alt-features-icon"><span class="icon-megaphone"></span></div>
-                  <h3 class="alt-features-title font-alt">Where to meet</h3>one0x Inc.<br/>4580 Automall Pkwy<br/>Fremont, 94538 CA
-                </div>
-                <div class="alt-features-item mt-xs-60">
-                  <div class="alt-features-icon"><span class="icon-map"></span></div>
-                  <h3 class="alt-features-title font-alt">Say Hello</h3>Email: consult@one0x.com<br/>Phone: +1 518 466 9786
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div class="module-small bg-dark">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-3">
-                <div class="widget">
-                  <h5 class="widget-title font-alt">About one0x</h5>
-                  <p>one0x is a self-governed decentralized platform that helps you gain control and ownership of your knowledge story.</p>
-                  <p>Phone: +1 518 466 9786</p>
-                  <p>Email:<a href="#">consult@one0x.com</a></p>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="widget">
-                  <h5 class="widget-title font-alt">Discover</h5>
-                  <ul class="icon-list">
-                    <li><a href="https://peerbuds.com/trust">Trust and Safety</a></li>
-                    <li><a href="https://peerbuds.com/home/experiences">Experiences</a></li>
-                    <li><a href="https://peerbuds.com/home/workshops">Classes</a></li>
-                    <li><a href="https://peerbuds.com/home/peers">Peers</a></li>
-                    <li><a href="https://peerbuds.com/home/commuities">Communities</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="widget">
-                  <h5 class="widget-title font-alt">Blog Categories</h5>
-                  <ul class="icon-list">
-                    <li><a href="http://blog.peerbuds.com/category/insights/">Insights</a></li>
-                    <li><a href="http://blog.peerbuds.com/category/blockchain/">Blockchain</a></li>
-                    <li><a href="http://blog.peerbuds.com/category/education/">Education</a></li>
-                    <li><a href="http://blog.peerbuds.com/tag/ethereum/">Ethereum</a></li>
-                    <li><a href="http://blog.peerbuds.com/category/uncategorized/">Others</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="widget">
-                  <h5 class="widget-title font-alt">Popular Posts</h5>
-                  <ul class="widget-posts">
-                    <li class="clearfix">
-                      <div class="widget-posts-image"><a href="http://blog.peerbuds.com/the-ico-model-is-broken-184/"><img src="assets/images/rp-1.jpg" alt="Post Thumbnail"/></a></div>
-                      <div class="widget-posts-body">
-                        <div class="widget-posts-title"><a href="#">The ICO model is broken</a></div>
-                        <div class="widget-posts-meta">20 May</div>
-                      </div>
-                    </li>
-                    <li class="clearfix">
-                      <div class="widget-posts-image"><a href="http://blog.peerbuds.com/the-blockchain-disrupting-privacy-in-healthcare-176/"><img src="assets/images/rp-2.jpg" alt="Post Thumbnail"/></a></div>
-                      <div class="widget-posts-body">
-                        <div class="widget-posts-title"><a href="#">The Blockchain: Disrupting privacy in healthcare?</a></div>
-                        <div class="widget-posts-meta">23 May</div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-        <hr class="divider-d">
-        <footer class="footer bg-dark">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-6">
-                <p class="copyright font-alt">&copy; 2018&nbsp;<a href="index.html">one0x Inc</a>, All Rights Reserved</p>
-              </div>
-              <div class="col-sm-6">
-                <div class="footer-social-links"><a href="https://facebook.com/one0x"><i class="fa fa-facebook"></i></a><a href="https://twitter.com/one0x"><i class="fa fa-twitter"></i></a><a href="https://instagram.com/one0x"><i class="fa fa-instagram"></i></a><a href="https://medium.com/one0x"><i class="fa fa-medium"></i></a>
-                </div>
-              </div>
+    </section>
+
+    <section class="learning-data">
+        <div class="container">
+            <div class="text-center content-center">
+                <h2 class="subheading">Gain ownership and control of your learning data</h2>
             </div>
-          </div>
-        </footer>
-      </div>
-      <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
-    </main>
-    <!--
-    JavaScripts
-    =============================================
-    -->
-    <script src="assets/lib/jquery/dist/jquery.js"></script>
-    <script src="assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="assets/lib/wow/dist/wow.js"></script>
-    <script src="assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
-    <script src="assets/lib/isotope/dist/isotope.pkgd.js"></script>
-    <script src="assets/lib/imagesloaded/imagesloaded.pkgd.js"></script>
-    <script src="assets/lib/flexslider/jquery.flexslider.js"></script>
-    <script src="assets/lib/owl.carousel/dist/owl.carousel.min.js"></script>
-    <script src="assets/lib/smoothscroll.js"></script>
-    <script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
-    <script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/main.js"></script>
+            <ul class="steps-process">
+                <li>Blockchain allows personal data to be just that —personal.</li>
+                <li>Students gain control and ownership of all their education data, including accreditation and portfolios of work. No more running around .</li>
+            </ul>
+        </div>
+        <div class="action-button text-center">
+            <a href="#" class="btn theme-btn action-btn-width235">View case study</a>
+        </div>
+    </section>
+
+    <section class="analyse-learning gray-bg">
+        <div class="container">
+            <div class="text-center content-center">
+                <h2 class="subheading">Analyse your learning and impact</h2>
+            </div>
+            <ul class="steps-process">
+                <li>"Imagine a scenario where every learning activity is registered on the Blockchain, including informal learning – together with informal feedback,"</li>
+                <li>You can map all assessment results on learning environment across a country and develop country wide analytics. The best lecturers by subject in a can could be easily identified. </li>
+            </ul>
+        </div>
+        <div class="action-button text-center">
+            <a href="#" class="btn theme-btn action-btn-width235">View case study</a>
+        </div>
+    </section>
+
+    <section class="micro-accreditation">
+        <div class="container">
+            <div class="text-center content-center">
+                <h2 class="subheading">Micro-accreditation</h2>
+            </div>
+            <ul class="steps-process">
+                <li>Currently, the verification process of resumes or transcripts involves consulting the institution itself, determining the quality of the accreditation the institution claims to have, confirming this issuance with the accrediting body itself, and checking with the governing authority to see if the accrediting body is authorized to operate in its particular capacity.</li>
+                <li>With blockchain, you can do this in a single click by looking at the pedigree of an assessment and visualising its accreditation chain.</li>
+            </ul>
+        </div>
+        <div class="action-button text-center">
+            <a href="#" class="btn theme-btn action-btn-width235">View case study</a>
+        </div>
+    </section>
+
+    <section class="payment-funding gray-bg">
+        <div class="container">
+            <div class="text-center content-center">
+                <h2 class="subheading">Payment and funding</h2>
+            </div>
+            <ul class="steps-process">
+                <li>Eliminate barriers such as restricted access to bank accounts or credit cards depending on country of origin.</li>
+                <li>Create self-regulated scholarships to fund education of the underprivileged or encourage higher learning for the passionate learners. </li>
+            </ul>
+        </div>
+        <div class="action-button text-center">
+            <a href="#" class="btn theme-btn action-btn-width235">View case study</a>
+        </div>
+    </section>
+
+    <section class="activities-tracked">
+        <div class="d-table wd100">
+            <div class="d-table-cell wd50 align-top position-relative">
+                <div class="box-content box-content-left-margin">
+                    <h2>What certificates <br>can be issued?</h2>
+                    <ul class="red-bullet">
+                        <li>Online classes</li>
+                        <li>Offline experiences</li>
+                        <li>Job positions</li>
+                        <li>Conferences or events</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-table-cell wd50 gray-bg">
+            </div>
+        </div>
+    </section>
+
+    <p>&nbsp;</p>
+
+
   </body>
 </html>

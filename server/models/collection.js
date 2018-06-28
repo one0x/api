@@ -125,7 +125,7 @@ module.exports = function(Collection) {
             })
             .then(function(result) {
                 console.log('Got hash from blockchain: ' + result);
-                cb(null, Collection.toAsciiResult(result));
+                cb(null, Collection.app.web3.utils.toAscii(result).split('\u0000')[0]);
             })
             .catch(err => {
                 console.error(err);

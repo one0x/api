@@ -2,4 +2,477 @@
     .container {
         max-width: 1190px;
     }
+    
+}
+@media (max-width: 1199px){
+    .home-banner > .container > .content,
+    .home-banner .banner-action{
+        margin-left: 0px;
+    }
+    .box-content{
+        padding: 30px 30px 30px 0;
+    }
+    .learn-more{
+        position: relative;
+        margin-top: 40px;
+    }
+    .resume-video{
+        overflow: hidden;
+    }
+    
+}
+
+@media screen and (min-width: 992px)  and (max-width: 1192px){ 
+    .resume-video{        
+        height: 450px;
+    }
+    .resume-video .video-thumb{
+        max-width: 800px;
+    }
+    .knowledge-story{
+        height: auto;
+    }
+    .knowledge-story h2{
+        margin-bottom: 30px;
+    }
+    .knowledge-story p {
+        margin-bottom: 25px;
+    }
+    .knowledge-story .action-button{
+        position: relative;
+        top: 20px;
+    }
+    .see-action .action-button{
+        margin-top: -90px;
+    }
+    .permanent-education h2{
+        padding-left: 0;
+    }
+    .home-pricing .pricing-box .content ul li{
+        padding: 60px 0;
+    }
+    .home-pricing .pricing-box .kite-icon{
+        left: 132%;
+        top: 8%;
+    }
+    .home-pricing .pricing-box .price-icon{
+        left: -96%;
+    }
+    .global-scholarship-fund{
+        height: 476px;
+    }
+    .global-scholarship-fund .image{
+        width: 488px;
+    }
+    .global-scholarship-fund .content{
+        padding-bottom: 120px;
+        margin-left: 70px;
+    }
+    .alpha-incentive .content{
+        padding: 30px 40px;
+    }
+}
+@media (max-width: 992px){
+    .home-banner .content h1,
+    .box-content h2,
+    .mission-vision h2,
+    .gyan .big-text,
+    .knowledge-story h2,
+    .benefit-education h2,
+    .permanent-education h2,
+    .box-content h2,
+    .how-to-integrate h2,
+    .karma-economics h2,
+    .home-pricing h2,
+    .home-partner h2,
+    .home-team h2,
+    .advisors h2,
+    .media h2,
+    .subscription h2{
+        font-size: 45px;
+        line-height: normal;
+    }
+    .mission-vision{
+        padding: 60px 0 25px 0;
+    }
+    .look-beyond-resume{
+        padding-bottom: 30px;
+    }
+    .gyan .quality-list{
+        margin-top: 20px;
+    }
+    .quality-list li{
+        margin-right: 13px;
+    }
+    .quality-list li img {
+        margin-right: 7px;
+    }
+    .knowledge-story{
+        height: auto;
+        margin-bottom: 90px;
+    }
+    .knowledge-story h2{
+        margin-bottom: 30px;
+    }
+    .knowledge-story p {
+        margin-bottom: 25px;
+    }
+    .knowledge-story .action-button{
+        position: relative;
+        top: 20px;
+    }
+    .karma-knowledge-reward .quality-list{
+        margin-top: 40px;
+    }
+    ul.steps-process li:nth-child(odd){
+        padding-left: 0;
+    }
+    ul.steps-process li:nth-child(even){
+        padding-right: 0;
+    }
+    .permanent-education h2{
+        padding-left: 0;
+    }
+    .home-pricing{
+        background-size: 100%;
+    }
+}
+@media screen and (min-width: 768px)  and (max-width: 991px){    
+    .home-banner .banner-action{
+        width: 92%;
+    }
+    .learner .wd30,
+    .learner .wd70,
+    .educators .wd30,
+    .educators .wd70{
+        width: 50%;
+    }
+    .resume-video{
+        margin-top: -30px;        
+        height: 450px;
+    }
+    .see-action .action-button{
+        margin-top: -60px;
+    }
+    .integration-steps .content{
+        padding-right: 0px;
+    }
+    .home-pricing .pricing-box .content ul li{
+        padding: 50px 0;
+    }
+    .home-pricing .pricing-box .kite-icon{
+        left: 125%;
+    }
+    .home-pricing .pricing-box .price-icon{
+        left: -83%;
+    }
+    .global-scholarship-fund{
+        height: auto;
+        margin-top: 0px;
+    }
+    .global-scholarship-fund .image{
+        width: 100%;
+        top: 0;
+    }
+    .global-scholarship-fund .content{
+        padding-bottom: 0px;
+        margin-left: 40px;
+        padding-right: 30px;
+        max-width: inherit;
+        padding-top: 30px;
+    }
+    .alpha-incentive .content{
+        padding: 20px 30px;
+        font-size: 14px;
+    }
+}
+@media screen and (min-width: 320px)  and (max-width: 767px){
+    .home-banner .banner-action{
+        width: 92%;
+        height: auto;
+    }
+    .home-search-form .input-box{
+        padding-left: 20px;
+        padding-right: 140px;
+    }  
+    .learner{
+        background-color: #F6FCFD;
+        padding-top: 30px;
+    }
+    .learner .d-table-cell,
+    .educators .d-table-cell{
+        display: block !important;
+    }    
+    .learner .wd30,
+    .learner .wd70,
+    .educators .wd30,
+    .educators .wd70{
+        width: 100%;
+    }
+    .box-content{
+        max-width: initial;
+        text-align: center;
+    }
+    .box-content-right-margin,
+    .box-content-left-margin {
+        margin-left: 30px;
+    }
+    .learner .img-fluid,
+    .educators .img-fluid{
+        margin: 0 auto;
+        display: inherit;
+    }
+    .learn-more{
+        text-align: center;
+    }
+    .learner.employer{
+        margin-top: 70px;
+    }
+    .resume-video{
+        margin-top: -30px;        
+        height: auto;
+        padding-bottom: 50px;
+    }
+    .resume-video .video-thumb .play-icon img{
+        width: 60px;
+    }
+    .resume-video .video-thumb .edit-icon img{
+        width: 140px;
+    }
+    .resume-video .video-thumb .read-icon{
+        right: -36%;
+    }
+    .resume-video .video-thumb .read-icon img{
+        width: 130px;
+    }
+    .resume-video .video-thumb .book-icon img{
+        width: 130px;
+    }
+    .resume-video .video-thumb .help-icon{
+        right: -29%;
+    }
+    .resume-video .video-thumb .help-icon img{
+        width: 140px;
+    }
+    .knowledge-story .image{
+        margin-right: 0px;
+    }
+    .knowledge-story .image .img-fluid{
+        margin: 0 auto;
+        display: inherit;
+    }
+    .knowledge-story .content{
+        margin:0 30px;
+        text-align: center;
+    }
+    .knowledge-story h2 {
+        margin-top: 30px;
+    }
+    .see-action .action-button{
+        margin-top: -10px;
+    }
+    .theme-btn{
+        width: 250px;
+        padding: 15px;
+    }
+    .home-search-form input.theme-btn{
+        width: auto;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .quality-list li {
+        margin-right: 10px;
+    }
+    .quality-list li:last-child{
+        margin-right: 0px;
+    }
+    .quality-list li img {
+        margin-right: 5px;
+    }
+    .quality-list li span{
+        letter-spacing: 0px;
+    }
+    .benefit-education .container{
+        max-width: initial;
+    }
+    ul.steps-process li{
+        font-size: 14px;
+    }
+    ul.steps-process li:nth-child(odd){
+        padding-right: 20px;
+    }
+    ul.steps-process li:nth-child(even){
+        padding-left: 20px;
+    }
+    .benefit-education {
+        padding: 40px 0 40px 0;
+    }
+    .permanent-education{
+        height: auto;
+        padding-bottom: 40px;
+    }
+    .permanent-education p.para{
+        margin-top: 0px;
+        margin-bottom: 40px;
+    }
+    .activities-tracked .d-table,
+    .activities-tracked .d-table-cell,
+    .karma-economics .d-table,
+    .karma-economics .d-table-cell,
+    .global-scholarship-fund .d-table,
+    .global-scholarship-fund .d-table-cell,
+    .alpha-incentive .d-table,
+    .alpha-incentive .d-table-cell{
+        display: block !important;
+        width: 100% !important;
+    }
+    .activities-tracked{
+        padding-bottom: 40px;
+    }
+    .activities-tracked .box-content{
+        text-align: left;
+    }
+    .activities-tracked .gray-bg,
+    .karma-economics .gray-bg{
+        height: 300px;
+    }
+    .integration-steps .content{
+        margin-bottom: 50px;
+    }
+    .home-pricing{
+        background-position: center 148px;
+    }
+    .home-pricing .pricing-box .content ul li{
+        padding: 20px 0;
+    }
+    .home-pricing .pricing-box .kite-icon{
+        left: 103%; 
+    }
+    .home-pricing .pricing-box .price-icon{
+        left: -55%;
+    }
+    .global-scholarship-fund,
+    .alpha-incentive,
+    .karma-economics,
+    .activities-tracked{
+        height: auto;
+        max-width: 550px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .global-scholarship-fund .image{
+        width: 100%;
+        top:0;
+    }
+    .global-scholarship-fund .content{
+        padding: 30px 50px;
+        margin-left: 0px;
+    }
+    .alpha-incentive{
+        margin-top: 40px;
+        padding-top: 50px;
+    }
+    .alpha-incentive .content{
+        background-color: transparent;
+        padding: 30px;
+    }
+    .alpha-incentive .heading-green-line {
+        margin-bottom: 0px;
+    }
+    .alpha-incentive .action-button{
+        background-color: transparent;
+        padding-top: 20px;
+        padding-bottom: 60px;
+    }
+    .alpha-incentive .action-button .theme-btn{
+        width: 90%;
+        max-width: 380px;
+        padding-left: 25px;
+        padding-right: 25px;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .home-partner .content,
+    .home-team .content {
+        padding-left: 0px;
+    }
+    .subscription .form-container .subscription-form .input-box{
+        padding-left: 20px;
+        padding-right: 140px;
+    } 
+    .subscription .form-container .subscription-form input.theme-btn {
+        width: auto;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    header .navbar-dark .right-links li{
+        margin-left: 0 !important;
+    }
+    header .navbar-dark .right-links a.nav-link{
+        height: 40px;
+        line-height: 40px;
+        padding: 0 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .navbar-dark .navbar-toggler{
+        border-color: rgba(255,255,255,.3);
+        color: rgba(255,255,255,.9);
+    }
+    .home-pricing .pricing-box .price-icon,
+    .home-pricing .pricing-box .kite-icon{
+        display: none;
+    }
+    header .navbar .navbar-nav{
+        background: rgba(0, 0, 0, 0.8);
+    }
+    header .navbar.fixed-header .navbar-nav{
+        background:transparent;
+    }
+}
+@media screen and (min-width: 320px)  and (max-width: 576px){
+    .home-partner .content .thumb-placeholder,
+    .home-team .content .thumb{
+        width: 230px;
+        margin: 15px auto;
+    }
+    .advisors .content .thumb-placeholder,
+    .media .content .thumb-placeholder{
+        width: 280px;
+        margin: 15px auto;
+    }
+    .subscription .form-container{
+        padding: 30px 0;
+    }
+    ul.footer-link li{
+        margin: 0 10px 20px 10px;
+    }
+    .home-partner > .container > .text-left,
+    .home-team > .container > .text-left{
+        text-align: center !important;
+    }
+    .home-pricing .pricing-box .content{
+        padding: 0 30px;
+    }
+    .alpha-incentive {
+        margin-top: 0px;
+    }
+    .resume-video .video-thumb .edit-icon{
+        top: -2%;
+        left: -31%;
+    }
+    .resume-video .video-thumb .read-icon {
+        right: -49%;
+        top: 20%;
+    }
+    .resume-video .video-thumb .book-icon{
+        top: 72%;
+        left: -16%;
+    }
+    .resume-video .video-thumb .help-icon {
+        right: -25%;
+        top: 80%;
+    }
+    
 }

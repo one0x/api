@@ -1,4 +1,7 @@
 'use strict';
+let request = require('request');
+let app = require('../../server/server');
+const apiUrl = app.get('apiUrl');
 
 module.exports = function(Collection) {
     const globalFunctions = require('../globalFunctions')(Collection);
@@ -74,6 +77,7 @@ module.exports = function(Collection) {
     Collection.assess = function(id, fk, data, cb) {
         this.app.getCollectionContractInstance()
             .then(collectionContractInstance => {
+                cb(null, {result: 'success'});
                 return collectionContractInstance.assess(id.replace(/-/g, ''), fk, data.assessmentResult, data.engagementResult, data.commitmentResult, data.hash);
             })
             .then(function(result) {
@@ -81,25 +85,74 @@ module.exports = function(Collection) {
                 const transaction = {
                     result: JSON.stringify(result),
                 };
+                let body = {};
                 Collection.app.models.transactions.create(transaction, function(err, transactionInstance) {
                     if (err) {
-                        cb(err);
+                        body = {
+                            certificateId: data.certificateId,
+                            collectionId: id,
+                            hash: data.hash,
+                            error: err,
+                        };
+                        // Trigger the result hook for this transaction
+                        request
+                            .post({
+                                url: apiUrl + '/api/assessment_results/sign-certificate',
+                                body: body,
+                                json: true,
+                            }, (err, response, data) => {
+                                if (err) {
+                                    console.error(err);
+                                } else if (data) {
+                                    console.log('BLOCKCHAIN TRANSACTION IN PROGRESS...');
+                                    console.log(data);
+                                } else {
+                                    console.log('transaction Id not found');
+                                    console.log(data);
+                                }
+                            });
                     } else {
                         transactionInstance.peer.add(fk, function(err, peerInstance) {
                             if (err) {
-                                cb(err);
+                                body = {
+                                    certificateId: data.certificateId,
+                                    collectionId: id,
+                                    hash: data.hash,
+                                    error: err,
+                                };
                             } else {
                                 console.log('Recorded assessment on blockchain: ');
                                 console.log(result);
-                                cb(null, result);
+                                body = {
+                                    certificateId: data.certificateId,
+                                    collectionId: id,
+                                    hash: data.hash,
+                                    result: result,
+                                };
                             }
+                            // Trigger the result hook for this transaction
+                            request
+                                .post({
+                                    url: apiUrl + '/api/assessment_results/sign-certificate',
+                                    body: body,
+                                    json: true,
+                                }, (err, response, data) => {
+                                    if (err) {
+                                        console.error(err);
+                                    } else if (data) {
+                                        console.log('BLOCKCHAIN TRANSACTION IN PROGRESS...');
+                                        console.log(data);
+                                    } else {
+                                        console.log('transaction Id not found');
+                                        console.log(data);
+                                    }
+                                });
                         });
                     }
                 });
             })
             .catch(err => {
                 console.error(err);
-                cb(err);
             });
     };
 

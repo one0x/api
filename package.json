@@ -28,7 +28,8 @@
     "strong-error-handler": "^2.0.0",
     "truffle-contract": "^3.0.5",
     "uuid": "latest",
-    "web3": "^1.0.0-beta.34"
+    "web3": "^1.0.0-beta.34",
+      "request": "latest"
   },
   "devDependencies": {
     "eslint": "^3.17.1",

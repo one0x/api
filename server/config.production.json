@@ -24,5 +24,6 @@
     },
     "blockProducerAddress": "0x742ba4f0cd93b3b7876a54ef10838973ebadcf49",
     "blockProducerPassword": "0C6&7vvvv",
-    "adminEmail": "aakash@one0x.com"
+    "adminEmail": "aakash@one0x.com",
+    "apiUrl": "https://theblockchainu.com:3002"
 }

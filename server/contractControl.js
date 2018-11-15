@@ -42,6 +42,21 @@ exports = module.exports = function(app) {
         });
     }
 
+    function unlockSpecificAndReturn(unlockAccount, accountPassword, cb) {
+        return new Promise(function(resolve, reject) {
+            console.log('Unlocking account: ' + unlockAccount);
+            web3.eth.personal.unlockAccount(unlockAccount, accountPassword)
+                .then(res => {
+                    console.log(res);
+                    resolve(cb);
+                })
+                .catch(err => {
+                    console.error(err);
+                    reject(err);
+                });
+        });
+    }
+
     function loadContracts() {
         unlockAccount();
         // Collection Contract
@@ -161,6 +176,10 @@ exports = module.exports = function(app) {
 
     app.getKarmaContractInstance = function() {
         return unlockAndReturn(karmaContractInstance);
+    };
+
+    app.getKarmaContractInstanceFor = function(unlockAccount, accountPassword) {
+        return unlockSpecificAndReturn(unlockAccount, accountPassword, karmaContractInstance);
     };
 
     app.getGyanContractInstance = function() {

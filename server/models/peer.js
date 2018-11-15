@@ -47,7 +47,35 @@ module.exports = function(Peer) {
                     if (err) {
                         cb(err);
                     } else {
-                        cb(null, result);
+                        this.app.getKarmaContractInstanceFor(this.app.get('advisoryPoolAddress'), this.app.get('advisoryPoolPassword'))
+                            .then(karmaContractInstance => {
+                                return karmaContractInstance.transfer(result, 100);
+                            })
+                            .then(function(result1) {
+                                // index this transaction result and link it to its peer
+                                const transaction = {
+                                    result: JSON.stringify(result1),
+                                };
+                                Peer.app.models.transactions.create(transaction, function(err, transactionInstance) {
+                                    if (err) {
+                                        cb(err);
+                                    } else {
+                                        transactionInstance.peer.add(result, function(err, peerInstance) {
+                                            if (err) {
+                                                cb(err);
+                                            } else {
+                                                console.log('Send 100 Karma to new user account: ');
+                                                console.log(result1);
+                                                cb(null, result);
+                                            }
+                                        });
+                                    }
+                                });
+                            })
+                            .catch(err => {
+                                console.error(err);
+                                cb(err);
+                            });
                     }
                 });
             })

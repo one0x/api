@@ -42,13 +42,33 @@ exports = module.exports = function(app) {
         });
     }
 
-    function unlockSpecificAndReturn(unlockAccount, accountPassword, cb) {
+    function unlockSpecificAndReturn(unlockAccount, accountPassword) {
         return new Promise(function(resolve, reject) {
-            console.log('Unlocking account: ' + unlockAccount);
-            web3.eth.personal.unlockAccount(unlockAccount, accountPassword)
-                .then(res => {
-                    console.log(res);
-                    resolve(cb);
+            // Karma Contract with a different from address
+            const KarmaContractArtifact = require('./contracts/KarmaCoin.json');
+            const KarmaContract = contract(KarmaContractArtifact);
+            KarmaContract.setProvider(web3.currentProvider);
+            if (typeof KarmaContract.currentProvider.sendAsync !== 'function') {
+                KarmaContract.currentProvider.sendAsync = function() {
+                    return KarmaContract.currentProvider.send.apply(
+                        KarmaContract.currentProvider, arguments
+                    );
+                };
+            }
+            KarmaContract.defaults({from: unlockAccount, gas: 3000000});
+            KarmaContract.deployed()
+                .then(function(instance) {
+                    console.log('got contract instance of karma with FROM address set to Advisory pool');
+                    console.log('Unlocking account: ' + unlockAccount);
+                    web3.eth.personal.unlockAccount(unlockAccount, accountPassword)
+                        .then(res => {
+                            console.log(res);
+                            resolve(instance);
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            reject(err);
+                        });
                 })
                 .catch(err => {
                     console.error(err);
@@ -179,7 +199,7 @@ exports = module.exports = function(app) {
     };
 
     app.getKarmaContractInstanceFor = function(unlockAccount, accountPassword) {
-        return unlockSpecificAndReturn(unlockAccount, accountPassword, karmaContractInstance);
+        return unlockSpecificAndReturn(unlockAccount, accountPassword);
     };
 
     app.getGyanContractInstance = function() {

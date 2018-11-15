@@ -47,7 +47,7 @@ module.exports = function(Peer) {
                     if (err) {
                         cb(err);
                     } else {
-                        this.app.getKarmaContractInstanceFor(this.app.get('advisoryPoolAddress'), this.app.get('advisoryPoolPassword'))
+                        Peer.app.getKarmaContractInstanceFor(Peer.app.get('advisoryPoolAddress'), Peer.app.get('advisoryPoolPassword'))
                             .then(karmaContractInstance => {
                                 return karmaContractInstance.transfer(result, 100);
                             })

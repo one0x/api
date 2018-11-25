@@ -201,6 +201,21 @@ module.exports = function(Collection) {
             });
     };
 
+    Collection.fetchPeer = function(id, fk, cb) {
+        this.app.getCollectionContractInstance()
+            .then(collectionContractInstance => {
+                return collectionContractInstance.getParticipant(id.replace(/-/g, ''), fk);
+            })
+            .then(function(result) {
+                console.log('Got peer of collection: ' + result);
+                cb(null, Collection.toAsciiResult(result));
+            })
+            .catch(err => {
+                console.error(err);
+                cb(err);
+            });
+    };
+
     Collection.fetchPeerResult = function(id, fk, cb) {
         this.app.getCollectionContractInstance()
             .then(collectionContractInstance => {
@@ -269,6 +284,19 @@ module.exports = function(Collection) {
             ],
             returns: {arg: 'result', type: ['object'], root: true},
             http: {verb: 'get', path: '/:id/peers'},
+        }
+    );
+
+    Collection.remoteMethod(
+        'fetchPeer',
+        {
+            description: 'Get a particular participant of a collection',
+            accepts: [
+                {arg: 'id', type: 'string', required: true},
+                {arg: 'fk', type: 'string', required: true},
+            ],
+            returns: {arg: 'result', type: ['object'], root: true},
+            http: {verb: 'get', path: '/:id/peers/:fk'},
         }
     );
 

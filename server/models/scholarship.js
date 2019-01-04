@@ -91,7 +91,11 @@ module.exports = function(Scholarship) {
             .then(function(result) {
                 console.log('Got peer of scholarship: ');
                 console.log(result);
-                cb(null, Scholarship.toAsciiResult(result));
+                if (result !== 0) {
+                    cb(null, result);
+                } else {
+                    cb(new Error('User not found'));
+                }
             })
             .catch(err => {
                 console.error(err);

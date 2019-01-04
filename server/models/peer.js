@@ -39,45 +39,50 @@ module.exports = function(Peer) {
     Peer.create = function(data, cb) {
         Peer.app.web3.eth.personal.newAccount(data.password)
             .then(result => {
-                console.log(result);
-                const protocolPeer = {
-                    id: result,
-                };
-                Peer.app.models.protocol_peer.create(protocolPeer, function(err, protoPeerInstance) {
-                    if (err) {
-                        cb(err);
-                    } else {
-                        Peer.app.getKarmaContractInstanceFor(Peer.app.get('advisoryPoolAddress'), Peer.app.get('advisoryPoolPassword'))
-                            .then(karmaContractInstance => {
-                                return karmaContractInstance.transfer(result, 100);
-                            })
-                            .then(function(result1) {
-                                // index this transaction result and link it to its peer
-                                const transaction = {
-                                    result: JSON.stringify(result1),
-                                };
-                                Peer.app.models.transactions.create(transaction, function(err, transactionInstance) {
-                                    if (err) {
-                                        cb(err);
-                                    } else {
-                                        transactionInstance.peer.add(result, function(err, peerInstance) {
-                                            if (err) {
-                                                cb(err);
-                                            } else {
-                                                console.log('Send 100 Karma to new user account: ');
-                                                console.log(result1);
-                                                cb(null, result);
-                                            }
-                                        });
-                                    }
+                if (result && result.substring(0, 2) === '0x') {
+                    console.log(result);
+                    const protocolPeer = {
+                        id: result,
+                    };
+                    Peer.app.models.protocol_peer.create(protocolPeer, function(err, protoPeerInstance) {
+                        if (err) {
+                            cb(err);
+                        } else {
+                            // Transfer 100 Karma from advisory pool to the new account.
+                            Peer.app.getKarmaContractInstanceFor(Peer.app.get('advisoryPoolAddress'), Peer.app.get('advisoryPoolPassword'))
+                                .then(karmaContractInstance => {
+                                    return karmaContractInstance.transfer(result, 100);
+                                })
+                                .then(function(result1) {
+                                    // index this transaction result and link it to its peer
+                                    const transaction = {
+                                        result: JSON.stringify(result1),
+                                    };
+                                    Peer.app.models.transactions.create(transaction, function(err, transactionInstance) {
+                                        if (err) {
+                                            cb(err);
+                                        } else {
+                                            transactionInstance.peer.add(result, function(err, peerInstance) {
+                                                if (err) {
+                                                    cb(err);
+                                                } else {
+                                                    console.log('Sent 100 Karma to new user account: ');
+                                                    console.log(result1);
+                                                    cb(null, result);
+                                                }
+                                            });
+                                        }
+                                    });
+                                })
+                                .catch(err => {
+                                    console.error(err);
+                                    cb(err);
                                 });
-                            })
-                            .catch(err => {
-                                console.error(err);
-                                cb(err);
-                            });
-                    }
-                });
+                        }
+                    });
+                } else {
+                    cb(new Error('Failed to create new ethereum account'));
+                }
             })
             .catch(err => {
                 console.error(err);

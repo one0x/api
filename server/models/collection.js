@@ -77,6 +77,8 @@ module.exports = function(Collection) {
     Collection.assess = function(id, fk, data, cb) {
         this.app.getCollectionContractInstance()
             .then(collectionContractInstance => {
+                console.log('Received student assessment request for collection: ' + id + ', participant: ' + fk);
+                console.log(data);
                 cb(null, {result: 'success'});
                 return collectionContractInstance.assess(id.replace(/-/g, ''), fk, data.assessmentResult, data.engagementResult, data.commitmentResult, data.hash);
             })

@@ -164,7 +164,7 @@ module.exports = function(Collection) {
                 return collectionContractInstance.getData(id.replace(/-/g, ''));
             })
             .then(function(result) {
-                console.log('Got collection from blockchain: ' + result);
+                console.log('Blockchain data for collection' + id + ' is: ' + result);
                 cb(null, Collection.toAsciiResult(result));
             })
             .catch(err => {

@@ -1,5 +1,8 @@
 'use strict';
 const InputDataDecoder = require('ethereum-input-data-decoder');
+let request = require('request');
+let app = require('../../server/server');
+const apiUrl = app.get('apiUrl');
 
 module.exports = function(Peer) {
     Peer.fetchTransactions = function(id, cb) {
@@ -37,38 +40,44 @@ module.exports = function(Peer) {
     };
 
     Peer.create = function(data, cb) {
+        cb(null, {result: 'success'});
         Peer.app.web3.eth.personal.newAccount(data.password)
-            .then(result => {
-                if (result && result.substring(0, 2) === '0x') {
-                    console.log(result);
+            .then(newEthAddress => {
+                if (newEthAddress && newEthAddress.substring(0, 2) === '0x') {
+                    console.log('NEW WALLET ACCOUNT: ' + newEthAddress);
+                    // Hit the remote API server hook with response
                     const protocolPeer = {
-                        id: result,
+                        id: newEthAddress,
                     };
+                    // Create a new ethereum peer node in DB and add a new transaction for him
                     Peer.app.models.protocol_peer.create(protocolPeer, function(err, protoPeerInstance) {
                         if (err) {
-                            cb(err);
+                            console.error(err);
+                            Peer.saveWalletHook(newEthAddress, data.userId, err);
                         } else {
                             // Transfer 100 Karma from advisory pool to the new account.
                             Peer.app.getKarmaContractInstanceFor(Peer.app.get('advisoryPoolAddress'), Peer.app.get('advisoryPoolPassword'))
                                 .then(karmaContractInstance => {
-                                    return karmaContractInstance.transfer(result, 100);
+                                    return karmaContractInstance.transfer(newEthAddress, 100);
                                 })
-                                .then(function(result1) {
-                                    // index this transaction result and link it to its peer
+                                .then(function(karmaTransferResult) {
+                                    // Save this transaction result and link it to its peer
                                     const transaction = {
-                                        result: JSON.stringify(result1),
+                                        result: JSON.stringify(karmaTransferResult),
                                     };
                                     Peer.app.models.transactions.create(transaction, function(err, transactionInstance) {
                                         if (err) {
-                                            cb(err);
+                                            console.error(err);
+                                            Peer.saveWalletHook(newEthAddress, data.userId, err);
                                         } else {
-                                            transactionInstance.peer.add(result, function(err, peerInstance) {
+                                            transactionInstance.peer.add(protoPeerInstance, function(err, peerTansactionRelationInstance) {
                                                 if (err) {
-                                                    cb(err);
+                                                    console.error(err);
+                                                    Peer.saveWalletHook(newEthAddress, data.userId, err);
                                                 } else {
                                                     console.log('Sent 100 Karma to new user account: ');
-                                                    console.log(result1);
-                                                    cb(null, result);
+                                                    console.log(karmaTransferResult);
+                                                    Peer.saveWalletHook(newEthAddress, data.userId, null);
                                                 }
                                             });
                                         }
@@ -76,17 +85,43 @@ module.exports = function(Peer) {
                                 })
                                 .catch(err => {
                                     console.error(err);
-                                    cb(err);
                                 });
                         }
                     });
                 } else {
-                    cb(new Error('Failed to create new ethereum account'));
+                    Peer.saveWalletHook(null, data.userId, new Error('Response from blockchain is not valid Wallet address'));
                 }
             })
             .catch(err => {
                 console.error(err);
-                cb(err);
+                Peer.saveWalletHook(null, data.userId, err);
+            });
+    };
+
+    Peer.saveWalletHook = function(ethAddress, userId, err) {
+        // Remote hook to notify API server
+        let body = {
+            ethAddress: ethAddress,
+            userId: userId,
+            error: err,
+            result: ethAddress,
+        };
+        // Trigger the result hook for this transaction
+        request
+            .post({
+                url: apiUrl + '/api/peers/save-wallet',
+                body: body,
+                json: true,
+            }, (err, response, data) => {
+                if (err) {
+                    console.error(err);
+                } else if (data) {
+                    console.log('UPDATED WALLET ON API SERVER');
+                    console.log(data);
+                } else {
+                    console.log('transaction Id not found');
+                    console.log(data);
+                }
             });
     };
 

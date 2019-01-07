@@ -69,7 +69,7 @@ module.exports = function(Collection) {
                 });
             })
             .catch(err => {
-                console.error(err);
+                console.log('Collection join error: ' + err);
                 cb(err);
             });
     };

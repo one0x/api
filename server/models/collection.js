@@ -38,13 +38,23 @@ module.exports = function(Collection) {
             });
     };
 
+    /**
+     * Join a collection with user provided scholarship details
+     * SUPPORTS REMOTE HOOK
+     * @param id
+     * @param fk
+     * @param data {scholarshipId: string, successCallback: string, failureCallback: string}
+     * @param cb
+     */
     Collection.join = function(id, fk, data, cb) {
         let scholarshipId = 'NA';
+        let callbackBody = {};
         if (data.scholarshipId && data.scholarshipId.length > 0) {
             scholarshipId = data.scholarshipId;
         }
         this.app.getCollectionContractInstance()
             .then(collectionContractInstance => {
+                cb(null, {result: 'success'});
                 return collectionContractInstance.join(id.replace(/-/g, ''), fk, scholarshipId.replace(/-/g, ''));
             })
             .then(function(result) {
@@ -53,18 +63,20 @@ module.exports = function(Collection) {
                     result: JSON.stringify(result),
                 };
                 Collection.app.models.transactions.create(transaction, function(err, transactionInstance) {
-                    if (err) {
-                        cb(err);
-                    } else {
+                    if (!err && transactionInstance) {
                         transactionInstance.peer.add(fk, function(err, peerInstance) {
-                            if (err) {
-                                cb(err);
-                            } else {
+                            if (!err && peerInstance) {
                                 console.log('Recorded participation on blockchain: ');
                                 console.log(result);
-                                cb(null, result);
+                                successCallback(id, fk, result, data);
+                            } else {
+                                console.log('collectionJoin: Failed to link user to transaction entry.');
+                                failureCallback(id, fk, err, data);
                             }
                         });
+                    } else {
+                        console.log('collectionJoin: Failed to create transaction entry.');
+                        failureCallback(id, fk, err, data);
                     }
                 });
             })
@@ -72,6 +84,61 @@ module.exports = function(Collection) {
                 console.log('Collection join error: ' + err);
                 cb(err);
             });
+
+        let successCallback = (collectionId, participantEthAddress, blockchainResult, requestBody) => {
+            if (requestBody.successCallback) {
+                // Trigger the result hook for this transaction
+                callbackBody = {
+                    collectionId: collectionId,
+                    participantEthAddress: participantEthAddress,
+                    result: blockchainResult,
+                    userParam1: requestBody.userParam1,
+                    userParam2: requestBody.userParam2,
+                    userParam3: requestBody.userParam3,
+                };
+                request
+                    .post({
+                        url: requestBody.successCallback,
+                        body: callbackBody,
+                        json: true,
+                    }, (err, response, data) => {
+                        if (err) {
+                            console.error(err);
+                        } else if (data) {
+                            console.log('collectionJoin: Remote hook notified');
+                            console.log(data);
+                        } else {
+                            console.log('transaction Id not found');
+                        }
+                    });
+            }
+        };
+
+        let failureCallback = (collectionId, participantEthAddress, error, requestBody) => {
+            if (requestBody.failureCallback) {
+                // Trigger the result hook for this transaction
+                callbackBody = {
+                    collectionId: collectionId,
+                    participantEthAddress: participantEthAddress,
+                    error: error,
+                };
+                request
+                    .post({
+                        url: requestBody.failureCallback,
+                        body: callbackBody,
+                        json: true,
+                    }, (err, response, data) => {
+                        if (err) {
+                            console.error(err);
+                        } else if (data) {
+                            console.log('collectionJoin: Remote hook notified');
+                            console.log(data);
+                        } else {
+                            console.log('transaction Id not found');
+                        }
+                    });
+            }
+        };
     };
 
     Collection.assess = function(id, fk, data, cb) {
@@ -106,14 +173,13 @@ module.exports = function(Collection) {
                                 if (err) {
                                     console.error(err);
                                 } else if (data) {
-                                    console.log('BLOCKCHAIN TRANSACTION IN PROGRESS...');
+                                    console.log('collectionAssess: Remote hook notified');
                                     console.log(data);
                                 } else {
                                     console.log('transaction Id not found');
-                                    console.log(data);
                                 }
                             });
-                    } else {
+                    }                    else {
                         transactionInstance.peer.add(fk, function(err, peerInstance) {
                             if (err) {
                                 body = {
@@ -142,11 +208,10 @@ module.exports = function(Collection) {
                                     if (err) {
                                         console.error(err);
                                     } else if (data) {
-                                        console.log('BLOCKCHAIN TRANSACTION IN PROGRESS...');
+                                        console.log('collectionAssess: Remote hook notified');
                                         console.log(data);
                                     } else {
                                         console.log('transaction Id not found');
-                                        console.log(data);
                                     }
                                 });
                         });

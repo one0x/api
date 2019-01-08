@@ -40,6 +40,7 @@ module.exports = function(Peer) {
     };
 
     Peer.create = function(data, cb) {
+        let callbackBody = {};
         cb(null, {result: 'success'});
         Peer.app.web3.eth.personal.newAccount(data.password)
             .then(newEthAddress => {
@@ -53,7 +54,7 @@ module.exports = function(Peer) {
                     Peer.app.models.protocol_peer.create(protocolPeer, function(err, protoPeerInstance) {
                         if (err) {
                             console.error(err);
-                            Peer.saveWalletHook(newEthAddress, data.userId, err);
+                            failureCallback(newEthAddress, data.userId, err, data);
                         } else {
                             // Transfer 100 Karma from advisory pool to the new account.
                             Peer.app.getKarmaContractInstanceFor(Peer.app.get('advisoryPoolAddress'), Peer.app.get('advisoryPoolPassword'))
@@ -68,16 +69,16 @@ module.exports = function(Peer) {
                                     Peer.app.models.transactions.create(transaction, function(err, transactionInstance) {
                                         if (err) {
                                             console.error(err);
-                                            Peer.saveWalletHook(newEthAddress, data.userId, err);
+                                            failureCallback(newEthAddress, data.userId, err, data);
                                         } else {
                                             transactionInstance.peer.add(protoPeerInstance, function(err, peerTansactionRelationInstance) {
                                                 if (err) {
                                                     console.error(err);
-                                                    Peer.saveWalletHook(newEthAddress, data.userId, err);
+                                                    failureCallback(newEthAddress, data.userId, err, data);
                                                 } else {
                                                     console.log('Sent 100 Karma to new user account: ');
                                                     console.log(karmaTransferResult);
-                                                    Peer.saveWalletHook(newEthAddress, data.userId, null);
+                                                    successCallback(newEthAddress, data.userId, newEthAddress, data);
                                                 }
                                             });
                                         }
@@ -89,40 +90,69 @@ module.exports = function(Peer) {
                         }
                     });
                 } else {
-                    Peer.saveWalletHook(null, data.userId, new Error('Response from blockchain is not valid Wallet address'));
+                    failureCallback(null, data.userId, new Error('Response from blockchain is not valid Wallet address'), data);
                 }
             })
             .catch(err => {
                 console.error(err);
-                Peer.saveWalletHook(null, data.userId, err);
+                failureCallback(null, data.userId, err, data);
             });
-    };
 
-    Peer.saveWalletHook = function(ethAddress, userId, err) {
-        // Remote hook to notify API server
-        let body = {
-            ethAddress: ethAddress,
-            userId: userId,
-            error: err,
-            result: ethAddress,
+        let successCallback = (ethAddress, userId, blockchainResult, requestBody) => {
+            if (requestBody.successCallback) {
+                // Trigger the result hook for this transaction
+                callbackBody = {
+                    ethAddress: ethAddress,
+                    userId: userId,
+                    result: blockchainResult,
+                    userParam1: requestBody.userParam1,
+                    userParam2: requestBody.userParam2,
+                    userParam3: requestBody.userParam3,
+                    userParam4: requestBody.userParam4,
+                };
+                request
+                    .post({
+                        url: requestBody.successCallback,
+                        body: callbackBody,
+                        json: true,
+                    }, (err, response, data) => {
+                        if (err) {
+                            console.error(err);
+                        } else if (data) {
+                            console.log('newWallet Success: Remote hook notified');
+                            console.log(data);
+                        } else {
+                            console.log('newWallet Success: Remote hook failed');
+                        }
+                    });
+            }
         };
-        // Trigger the result hook for this transaction
-        request
-            .post({
-                url: apiUrl + '/api/peers/save-wallet',
-                body: body,
-                json: true,
-            }, (err, response, data) => {
-                if (err) {
-                    console.error(err);
-                } else if (data) {
-                    console.log('UPDATED WALLET ON API SERVER');
-                    console.log(data);
-                } else {
-                    console.log('transaction Id not found');
-                    console.log(data);
-                }
-            });
+
+        let failureCallback = (ethAddress, userId, error, requestBody) => {
+            if (requestBody.failureCallback) {
+                // Trigger the result hook for this transaction
+                callbackBody = {
+                    ethAddress: ethAddress,
+                    userId: userId,
+                    error: error,
+                };
+                request
+                    .post({
+                        url: requestBody.failureCallback,
+                        body: callbackBody,
+                        json: true,
+                    }, (err, response, data) => {
+                        if (err) {
+                            console.error(err);
+                        } else if (data) {
+                            console.log('newWallet Failed: Remote hook notified');
+                            console.log(data);
+                        } else {
+                            console.log('newWallet Failed: Remote hook failed');
+                        }
+                    });
+            }
+        };
     };
 
     Peer.remoteMethod(

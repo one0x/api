@@ -82,7 +82,7 @@ module.exports = function(Collection) {
             })
             .catch(err => {
                 console.log('Collection join error: ' + err);
-                cb(err);
+                failureCallback(id, fk, err, data);
             });
 
         let successCallback = (collectionId, participantEthAddress, blockchainResult, requestBody) => {

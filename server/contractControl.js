@@ -55,7 +55,7 @@ exports = module.exports = function(app) {
                     );
                 };
             }
-            KarmaContract.defaults({from: unlockAccount, gas: 3000000});
+            KarmaContract.defaults({from: unlockAccount, gas: 5000000, gasPrice: 40000000000});
             KarmaContract.deployed()
                 .then(function(instance) {
                     console.log('got contract instance of karma with FROM address set to Advisory pool');
@@ -90,7 +90,7 @@ exports = module.exports = function(app) {
                 );
             };
         }
-        CollectionContract.defaults({from: app.get('blockProducerAddress'), gas: 3000000});
+        CollectionContract.defaults({from: app.get('blockProducerAddress'), gas: 5000000, gasPrice: 40000000000});
         CollectionContract.deployed()
             .then(function(instance) {
                 console.log('got contract instance of collection');
@@ -112,7 +112,7 @@ exports = module.exports = function(app) {
                 );
             };
         }
-        KarmaContract.defaults({from: app.get('blockProducerAddress'), gas: 3000000});
+        KarmaContract.defaults({from: app.get('blockProducerAddress'), gas: 5000000, gasPrice: 40000000000});
         KarmaContract.deployed()
             .then(function(instance) {
                 console.log('got contract instance of karma');
@@ -134,7 +134,7 @@ exports = module.exports = function(app) {
                 );
             };
         }
-        GyanContract.defaults({from: app.get('blockProducerAddress'), gas: 3000000});
+        GyanContract.defaults({from: app.get('blockProducerAddress'), gas: 5000000, gasPrice: 40000000000});
         GyanContract.deployed()
             .then(function(instance) {
                 console.log('got contract instance of gyan');
@@ -156,7 +156,7 @@ exports = module.exports = function(app) {
                 );
             };
         }
-        ScholarshipContract.defaults({from: app.get('blockProducerAddress'), gas: 3000000});
+        ScholarshipContract.defaults({from: app.get('blockProducerAddress'), gas: 5000000, gasPrice: 40000000000});
         ScholarshipContract.deployed()
             .then(function(instance) {
                 console.log('got contract instance of scholarship');
@@ -178,7 +178,7 @@ exports = module.exports = function(app) {
                 );
             };
         }
-        QuestionContract.defaults({from: app.get('blockProducerAddress'), gas: 3000000});
+        QuestionContract.defaults({from: app.get('blockProducerAddress'), gas: 5000000, gasPrice: 40000000000});
         QuestionContract.deployed()
             .then(function(instance) {
                 console.log('got contract instance of question');

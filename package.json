@@ -11,6 +11,7 @@
     "posttest": "npm run lint && nsp check"
   },
   "dependencies": {
+    "@sentry/node": "^4.4.2",
     "bignumber.js": "^5.0.0",
     "body-parser": "latest",
     "compression": "^1.0.3",
@@ -24,12 +25,12 @@
     "loopback-connector-neo4j-cypher": "0.0.6",
     "loopback-connector-neo4j-graphs": "0.0.1",
     "loopback-ds-timestamp-mixin": "^3.4.1",
+    "request": "latest",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^2.0.0",
     "truffle-contract": "^3.0.5",
     "uuid": "latest",
-    "web3": "^1.0.0-beta.34",
-    "request": "latest"
+    "web3": "^1.0.0-beta.34"
   },
   "devDependencies": {
     "eslint": "^3.17.1",

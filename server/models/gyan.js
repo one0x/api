@@ -2,7 +2,7 @@
 
 module.exports = function(Gyan) {
     Gyan.getFloatingBalance = function(id, cb) {
-        this.app.getGyanContractInstance()
+        this.app.getGyanContractInstance(false)
             .then(gyanContractInstance => {
                 return gyanContractInstance.floatingBalanceOf(id);
             })
@@ -17,7 +17,7 @@ module.exports = function(Gyan) {
     };
 
     Gyan.getFixedBalance = function(id, cb) {
-        this.app.getGyanContractInstance()
+        this.app.getGyanContractInstance(false)
             .then(gyanContractInstance => {
                 return gyanContractInstance.fixedBalanceOf(id);
             })
@@ -32,7 +32,7 @@ module.exports = function(Gyan) {
     };
 
     Gyan.karmaToBurn = function(amount, cb) {
-        this.app.getCollectionContractInstance()
+        this.app.getCollectionContractInstance(false)
             .then(collectionContractInstance => {
                 return collectionContractInstance.getKarmaToBurn(amount);
             })
@@ -47,7 +47,7 @@ module.exports = function(Gyan) {
     };
 
     Gyan.getYesterdayMint = function(cb) {
-        this.app.getGyanContractInstance()
+        this.app.getGyanContractInstance(false)
             .then(gyanContractInstance => {
                 return gyanContractInstance.yesterdayMint();
             })
@@ -62,7 +62,7 @@ module.exports = function(Gyan) {
     };
 
     Gyan.getTotalSupply = function(cb) {
-        this.app.getGyanContractInstance()
+        this.app.getGyanContractInstance(false)
             .then(gyanContractInstance => {
                 return gyanContractInstance.totalSupply();
             })

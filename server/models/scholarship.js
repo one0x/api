@@ -4,7 +4,7 @@ module.exports = function(Scholarship) {
     const globalFunctions = require('../globalFunctions')(Scholarship);
 
     Scholarship.create = function(data, cb) {
-        this.app.getScholarshipContractInstance()
+        this.app.getScholarshipContractInstance(true)
             .then(schContractInst => {
                 return schContractInst.create(data.uniqueId.replace(/-/g, ''), data.ownerAddress, data.type, data.title, data.description, data.preRequisite, data.transactionLimit, data.walletAddress, data.allowedCollections);
             })
@@ -36,7 +36,7 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.join = function(id, fk, data, cb) {
-        this.app.getScholarshipContractInstance()
+        this.app.getScholarshipContractInstance(true)
             .then(schContractInst => {
                 return schContractInst.join(id.replace(/-/g, ''), fk);
             })
@@ -68,7 +68,7 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.fetch = function(id, cb) {
-        this.app.getScholarshipContractInstance()
+        this.app.getScholarshipContractInstance(false)
             .then(schContractInst => {
                 return schContractInst.getScholarshipData(id.replace(/-/g, ''));
             })
@@ -84,7 +84,7 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.fetchPeer = function(id, fk, cb) {
-        this.app.getScholarshipContractInstance()
+        this.app.getScholarshipContractInstance(false)
             .then(schContractInst => {
                 return schContractInst.getParticipant(id.replace(/-/g, ''), fk);
             })
@@ -104,7 +104,7 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.fetchCollection = function(id, fk, cb) {
-        this.app.getScholarshipContractInstance()
+        this.app.getScholarshipContractInstance(false)
             .then(schContractInst => {
                 return schContractInst.getAllowedCollection(id.replace(/-/g, ''), fk);
             })
@@ -120,7 +120,7 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.addCollection = function(id, fk, data, cb) {
-        this.app.getScholarshipContractInstance()
+        this.app.getScholarshipContractInstance(true)
             .then(schContractInst => {
                 return schContractInst.addCollection(id.replace(/-/g, ''), fk);
             })
@@ -136,7 +136,7 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.fetchBalance = function(id, cb) {
-        this.app.getScholarshipContractInstance()
+        this.app.getScholarshipContractInstance(false)
             .then(schContractInst => {
                 return schContractInst.balanceOf(id.replace(/-/g, ''));
             })
@@ -152,7 +152,7 @@ module.exports = function(Scholarship) {
     };
 
     Scholarship.dropPeer = function(id, fk, cb) {
-        this.app.getScholarshipContractInstance()
+        this.app.getScholarshipContractInstance(true)
             .then(schContractInst => {
                 return schContractInst.drop(id.replace(/-/g, ''), fk);
             })

@@ -190,27 +190,47 @@ exports = module.exports = function(app) {
             });
     }
 
-    app.getCollectionContractInstance = function() {
-        return unlockAndReturn(collectionContractInstance);
+    app.getCollectionContractInstance = function(unlock?: boolean) {
+        if (unlock) {
+            return unlockAndReturn(collectionContractInstance);
+        } else {
+            return collectionContractInstance;
+        }
     };
 
-    app.getKarmaContractInstance = function() {
-        return unlockAndReturn(karmaContractInstance);
+    app.getKarmaContractInstance = function(unlock?: boolean) {
+        if (unlock) {
+            return unlockAndReturn(karmaContractInstance);
+        } else {
+            return karmaContractInstance;
+        }
     };
 
     app.getKarmaContractInstanceFor = function(unlockAccount, accountPassword) {
         return unlockSpecificAndReturn(unlockAccount, accountPassword);
     };
 
-    app.getGyanContractInstance = function() {
-        return unlockAndReturn(gyanContractInstance);
+    app.getGyanContractInstance = function(unlock?: boolean) {
+        if (unlock) {
+            return unlockAndReturn(gyanContractInstance);
+        } else {
+            return gyanContractInstance;
+        }
     };
 
-    app.getScholarshipContractInstance = function() {
-        return unlockAndReturn(scholarshipContractInstance);
+    app.getScholarshipContractInstance = function(unlock?: boolean) {
+        if (unlock) {
+            return unlockAndReturn(scholarshipContractInstance);
+        } else {
+            return scholarshipContractInstance;
+        }
     };
 
-    app.getQuestionContractInstance = function() {
-        return unlockAndReturn(questionContractInstance);
+    app.getQuestionContractInstance = function(unlock?: boolean) {
+        if (unlock) {
+            return unlockAndReturn(questionContractInstance);
+        } else {
+            return questionContractInstance;
+        }
     };
 };

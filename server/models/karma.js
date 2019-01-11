@@ -2,7 +2,7 @@
 
 module.exports = function(Karma) {
     Karma.getBalance = function(id, cb) {
-        this.app.getKarmaContractInstance()
+        this.app.getKarmaContractInstance(false)
             .then(karmaContractInstance => {
                 return karmaContractInstance.balanceOf(id);
             })
@@ -17,7 +17,7 @@ module.exports = function(Karma) {
     };
 
     Karma.getTotalSupply = function(cb) {
-        this.app.getKarmaContractInstance()
+        this.app.getKarmaContractInstance(false)
             .then(karmaContractInstance => {
                 return karmaContractInstance.totalSupply();
             })
@@ -32,7 +32,7 @@ module.exports = function(Karma) {
     };
 
     Karma.getDailyMint = function(cb) {
-        this.app.getGyanContractInstance()
+        this.app.getGyanContractInstance(false)
             .then(gyanContractInstance => {
                 return gyanContractInstance.dailyKarmaMint();
             })
@@ -47,7 +47,7 @@ module.exports = function(Karma) {
     };
 
     Karma.getPotentialRewards = function(id, cb) {
-        this.app.getGyanContractInstance()
+        this.app.getGyanContractInstance(false)
             .then(gyanContractInstance => {
                 return gyanContractInstance.potentialKarmaReward(id);
             })
@@ -62,7 +62,7 @@ module.exports = function(Karma) {
     };
 
     Karma.mintRewards = function(cb) {
-        this.app.getGyanContractInstance()
+        this.app.getGyanContractInstance(true)
             .then(gyanContractInstance => {
                 return gyanContractInstance.mintRewards();
             })

@@ -190,7 +190,7 @@ exports = module.exports = function(app) {
             });
     }
 
-    app.getCollectionContractInstance = function(unlock: boolean) {
+    app.getCollectionContractInstance = function(unlock) {
         if (unlock) {
             return unlockAndReturn(collectionContractInstance);
         } else {
@@ -198,7 +198,7 @@ exports = module.exports = function(app) {
         }
     };
 
-    app.getKarmaContractInstance = function(unlock: boolean) {
+    app.getKarmaContractInstance = function(unlock) {
         if (unlock) {
             return unlockAndReturn(karmaContractInstance);
         } else {
@@ -210,7 +210,7 @@ exports = module.exports = function(app) {
         return unlockSpecificAndReturn(unlockAccount, accountPassword);
     };
 
-    app.getGyanContractInstance = function(unlock: boolean) {
+    app.getGyanContractInstance = function(unlock) {
         if (unlock) {
             return unlockAndReturn(gyanContractInstance);
         } else {
@@ -218,7 +218,7 @@ exports = module.exports = function(app) {
         }
     };
 
-    app.getScholarshipContractInstance = function(unlock: boolean) {
+    app.getScholarshipContractInstance = function(unlock) {
         if (unlock) {
             return unlockAndReturn(scholarshipContractInstance);
         } else {
@@ -226,7 +226,7 @@ exports = module.exports = function(app) {
         }
     };
 
-    app.getQuestionContractInstance = function(unlock: boolean) {
+    app.getQuestionContractInstance = function(unlock) {
         if (unlock) {
             return unlockAndReturn(questionContractInstance);
         } else {

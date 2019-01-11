@@ -194,7 +194,9 @@ exports = module.exports = function(app) {
         if (unlock) {
             return unlockAndReturn(collectionContractInstance);
         } else {
-            return collectionContractInstance;
+            return new Promise(function(resolve, reject) {
+                resolve(collectionContractInstance);
+            });
         }
     };
 
@@ -202,7 +204,9 @@ exports = module.exports = function(app) {
         if (unlock) {
             return unlockAndReturn(karmaContractInstance);
         } else {
-            return karmaContractInstance;
+            return new Promise(function(resolve, reject) {
+                resolve(karmaContractInstance);
+            });
         }
     };
 
@@ -214,7 +218,9 @@ exports = module.exports = function(app) {
         if (unlock) {
             return unlockAndReturn(gyanContractInstance);
         } else {
-            return gyanContractInstance;
+            return new Promise(function(resolve, reject) {
+                resolve(gyanContractInstance);
+            });
         }
     };
 
@@ -222,7 +228,9 @@ exports = module.exports = function(app) {
         if (unlock) {
             return unlockAndReturn(scholarshipContractInstance);
         } else {
-            return scholarshipContractInstance;
+            return new Promise(function(resolve, reject) {
+                resolve(scholarshipContractInstance);
+            });
         }
     };
 
@@ -230,7 +238,9 @@ exports = module.exports = function(app) {
         if (unlock) {
             return unlockAndReturn(questionContractInstance);
         } else {
-            return questionContractInstance;
+            return new Promise(function(resolve, reject) {
+                resolve(questionContractInstance);
+            });
         }
     };
 };

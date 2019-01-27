@@ -11,7 +11,7 @@
     "password": "0C6&7vvvv",
     "name": "neo4j",
     "connector": "neo4j-graphs",
-    "hostname": "127.0.0.1",
+    "hostname": "theblockchainu.com",
     "debug": true
   },
   "neo4j-cypher": {
@@ -20,7 +20,7 @@
     "password": "0C6&7vvvv",
     "name": "neo4j-cypher",
     "connector": "neo4j-cypher",
-    "hostname": "127.0.0.1",
+    "hostname": "theblockchainu.com",
     "debug": true
   }
 }

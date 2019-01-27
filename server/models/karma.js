@@ -1,4 +1,7 @@
 'use strict';
+let request = require('request');
+let app = require('../../server/server');
+const apiUrl = app.get('apiUrl');
 
 module.exports = function(Karma) {
     Karma.getBalance = function(id, cb) {
@@ -61,22 +64,89 @@ module.exports = function(Karma) {
             });
     };
 
-    Karma.mintRewards = function(cb) {
+    Karma.mintRewards = function(data, cb) {
+        let callbackBody = {};
         this.app.getGyanContractInstance(true)
             .then(gyanContractInstance => {
+                cb(null, {result: 'success'});
                 return gyanContractInstance.mintRewards();
             })
             .then(function(result) {
-                console.log('Tried minting karma rewards: ' + result);
-                cb(null, result);
+                const transaction = {
+                    result: JSON.stringify(result),
+                    type: 'reward',
+                };
+                Karma.app.models.transactions.create(transaction, function(err, transactionInstance) {
+                    if (!err && transactionInstance) {
+                        console.log('Tried minting karma rewards: ');
+                        console.log(result);
+                        successCallback(transactionInstance.id, result, data);
+                    } else {
+                        console.log('mintRewards: Failed to create transaction entry.');
+                        failureCallback(err, data);
+                    }
+                });
+                successCallback(result, data);
             }, err => {
                 console.error('Could not execute Karma rewards');
-                cb(err);
+                failureCallback(err, data);
             })
             .catch(err => {
                 console.error('Could not execute Karma rewards');
-                cb(err);
+                failureCallback(err, data);
             });
+
+        let successCallback = (transactionId, blockchainResult, requestBody) => {
+            if (requestBody.successCallback) {
+                // Trigger the result hook for this transaction
+                callbackBody = {
+                    transactionId: transactionId,
+                    result: blockchainResult,
+                    userParam1: requestBody.userParam1,
+                    userParam2: requestBody.userParam2,
+                    userParam3: requestBody.userParam3,
+                };
+                request
+                    .post({
+                        url: requestBody.successCallback,
+                        body: callbackBody,
+                        json: true,
+                    }, (err, response, data) => {
+                        if (err) {
+                            console.error(err);
+                        } else if (data) {
+                            console.log('mintRewards: Remote hook notified');
+                            console.log(data);
+                        } else {
+                            console.log('Remote hook notify failure');
+                        }
+                    });
+            }
+        };
+
+        let failureCallback = (error, requestBody) => {
+            if (requestBody.failureCallback) {
+                // Trigger the result hook for this transaction
+                callbackBody = {
+                    error: error,
+                };
+                request
+                    .post({
+                        url: requestBody.failureCallback,
+                        body: callbackBody,
+                        json: true,
+                    }, (err, response, data) => {
+                        if (err) {
+                            console.error(err);
+                        } else if (data) {
+                            console.log('mintRewards: Remote hook notified');
+                            console.log(data);
+                        } else {
+                            console.log('Remote hook notify failure');
+                        }
+                    });
+            }
+        };
     };
 
     Karma.remoteMethod(
@@ -125,6 +195,9 @@ module.exports = function(Karma) {
         'mintRewards',
         {
             description: 'Execute daily karma rewards minting and distribution',
+            accepts: [
+                { arg: 'body', type: 'object', required: true, http: { source: 'body' } }
+            ],
             returns: {arg: 'result', type: ['object'], root: true},
             http: {verb: 'post', path: '/mintRewards'},
         }

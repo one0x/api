@@ -17,10 +17,6 @@ Sentry.init({ dsn: 'https://f07f7574011f4dfda64bc4bd7d7042d9@sentry.io/1367265' 
 // The request handler must be the first middleware on the app
 app.use(Sentry.Handlers.requestHandler());
 
-app.get('/', function mainHandler(req, res) {
-    throw new Error('Broke!');
-});
-
 // The error handler must be before any other error middleware
 app.use(Sentry.Handlers.errorHandler());
 

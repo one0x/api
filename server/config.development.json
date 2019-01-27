@@ -19,9 +19,9 @@
         },
         "cors": false
     },
-    "blockProducerAddress": "0x0de7a68c1f2fa6321fb58661a693489c4c383dd1",
+    "blockProducerAddress": "0x298B7907FB9bAb56DBc2aFD0dc991db2eAED014B",
     "blockProducerPassword": "0C6&7vvvv",
-    "advisoryPoolAddress": "0xe97fa3870964dc93804615254025843a3e51dfef",
+    "advisoryPoolAddress": "0xfBF2284fa5ceB75Dad3ac8703cE8e90b4E4D5dd3",
     "advisoryPoolPassword": "0C6&7vvvv",
     "adminEmail": "aakash@one0x.com",
     "apiUrl": "http://localhost:3000"

@@ -179,7 +179,7 @@ module.exports = function(Collection) {
                                     console.log('transaction Id not found');
                                 }
                             });
-                    }                    else {
+                    } else {
                         transactionInstance.peer.add(fk, function(err, peerInstance) {
                             if (err) {
                                 body = {

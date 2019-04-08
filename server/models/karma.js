@@ -86,9 +86,9 @@ module.exports = function(Karma) {
                         failureCallback(err, data);
                     }
                 });
-                successCallback(result, data);
             }, err => {
                 console.error('Could not execute Karma rewards');
+                console.log(err.message);
                 failureCallback(err, data);
             })
             .catch(err => {
@@ -128,7 +128,8 @@ module.exports = function(Karma) {
             if (requestBody.failureCallback) {
                 // Trigger the result hook for this transaction
                 callbackBody = {
-                    error: error,
+                    error: error.message,
+                    errorName: error.name,
                 };
                 request
                     .post({
@@ -196,7 +197,7 @@ module.exports = function(Karma) {
         {
             description: 'Execute daily karma rewards minting and distribution',
             accepts: [
-                { arg: 'body', type: 'object', required: true, http: { source: 'body' } }
+                { arg: 'body', type: 'object', required: true, http: { source: 'body' } },
             ],
             returns: {arg: 'result', type: ['object'], root: true},
             http: {verb: 'post', path: '/mintRewards'},

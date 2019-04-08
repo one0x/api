@@ -1,66 +1,73 @@
 {
-  "name": "collection",
-  "base": "Model",
-  "idInjection": false,
-  "options": {
-    "validateUpsert": true
-  },
-  "properties": {
-    "uniqueId": {
-      "type": "string",
-      "id": true,
-      "required": true
+    "name": "collection",
+    "base": "Model",
+    "idInjection": false,
+    "options": {
+        "validateUpsert": true
     },
-    "teacherAddress": {
-      "type": "string",
-      "required": true
+    "mixins": {
+        "TimeStamp": {
+            "createdAt": "createdAt",
+            "updatedAt": "updatedAt",
+            "required": false
+        }
     },
-    "type": {
-      "type": "string",
-      "required": true
+    "properties": {
+        "uniqueId": {
+            "type": "string",
+            "id": true,
+            "required": true
+        },
+        "teacherAddress": {
+            "type": "string",
+            "required": true
+        },
+        "type": {
+            "type": "string",
+            "required": true
+        },
+        "learningHours": {
+            "type": "string",
+            "required": true
+        },
+        "hash": {
+            "type": "string"
+        },
+        "academicGyan": {
+            "type": "number",
+            "required": true
+        },
+        "nonAcademicGyan": {
+            "type": "number",
+            "required": true
+        },
+        "assessmentRuleKeys": {
+            "type": [
+                "string"
+            ],
+            "required": true
+        },
+        "assessmentRuleValues": {
+            "type": [
+                "number"
+            ],
+            "required": true
+        },
+        "nonAcademicRules": {
+            "type": [
+                "string"
+            ],
+            "required": true
+        },
+        "topics": {
+            "type": [
+                "string"
+            ],
+            "required": true
+        }
     },
-    "learningHours": {
-      "type": "string",
-      "required": true
-    },
-    "hash": {
-      "type": "string"
-    },
-    "academicGyan": {
-      "type": "number",
-      "required": true
-    },
-    "nonAcademicGyan": {
-      "type": "number",
-      "required": true
-    },
-    "assessmentRuleKeys": {
-      "type": [
-        "string"
-      ],
-      "required": true
-    },
-    "assessmentRuleValues": {
-      "type": [
-        "number"
-      ],
-      "required": true
-    },
-    "nonAcademicRules": {
-      "type": [
-        "string"
-      ],
-      "required": true
-    },
-    "topics": {
-      "type": [
-        "string"
-      ],
-      "required": true
-    }
-  },
-  "validations": [],
-  "relations": {},
-  "acls": [],
-  "methods": {}
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
 }

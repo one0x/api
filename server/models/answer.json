@@ -5,6 +5,13 @@
     "options": {
         "validateUpsert": true
     },
+    "mixins": {
+        "TimeStamp": {
+            "createdAt": "createdAt",
+            "updatedAt": "updatedAt",
+            "required": false
+        }
+    },
     "properties": {
         "uniqueId": {
             "type": "string",
@@ -28,8 +35,7 @@
         }
     },
     "validations": [],
-    "relations": {
-    },
+    "relations": {},
     "acls": [],
     "methods": {}
 }

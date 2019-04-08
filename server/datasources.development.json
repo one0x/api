@@ -1,0 +1,26 @@
+{
+    "mailgun": {
+        "name": "mailgun",
+        "connector": "loopback-connector-mailgun",
+        "apikey": "key-138d95c6c3d15a9eceac97ca86c41201",
+        "domain": "mx.one0x.com"
+    },
+    "neo4j": {
+        "port": 7474,
+        "username": "neo4j",
+        "password": "0C6&7vvvv",
+        "name": "neo4j",
+        "connector": "neo4j-graphs",
+        "hostname": "127.0.0.1",
+        "debug": true
+    },
+    "neo4j-cypher": {
+        "port": 7474,
+        "username": "neo4j",
+        "password": "0C6&7vvvv",
+        "name": "neo4j-cypher",
+        "connector": "neo4j-cypher",
+        "hostname": "127.0.0.1",
+        "debug": true
+    }
+}

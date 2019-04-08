@@ -60,5 +60,9 @@
   "answer": {
     "dataSource": null,
     "public": true
+  },
+  "event": {
+    "dataSource": "neo4j",
+    "public": true
   }
 }

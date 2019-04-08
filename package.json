@@ -1,5 +1,5 @@
 {
-  "name": "pbprotocol",
+  "name": "one0x API",
   "version": "1.0.0",
   "main": "server/server.js",
   "engines": {
@@ -18,13 +18,16 @@
     "cors": "^2.5.2",
     "ethereum-input-data-decoder": "0.0.6",
     "helmet": "^3.10.0",
+    "lodash": "latest",
     "loopback": "^3.19.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.0.0",
+    "loopback-component-oauth2": "^3.2.0",
     "loopback-connector-mailgun": "0.0.11",
     "loopback-connector-neo4j-cypher": "0.0.6",
     "loopback-connector-neo4j-graphs": "0.0.1",
     "loopback-ds-timestamp-mixin": "^3.4.1",
+    "moment": "^2.24.0",
     "request": "latest",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^2.0.0",
@@ -42,5 +45,5 @@
     "url": ""
   },
   "license": "MIT",
-  "description": "pbprotocol"
+  "description": "one0x APIs"
 }

@@ -95,6 +95,7 @@ exports = module.exports = function(app) {
             .then(function(instance) {
                 console.log('got contract instance of collection');
                 collectionContractInstance = instance;
+                watchAllEvents(collectionContractInstance);
                 return instance;
             })
             .catch(err => {
@@ -117,6 +118,7 @@ exports = module.exports = function(app) {
             .then(function(instance) {
                 console.log('got contract instance of karma');
                 karmaContractInstance = instance;
+                watchAllEvents(karmaContractInstance);
                 return instance;
             })
             .catch(err => {
@@ -139,6 +141,7 @@ exports = module.exports = function(app) {
             .then(function(instance) {
                 console.log('got contract instance of gyan');
                 gyanContractInstance = instance;
+                watchAllEvents(gyanContractInstance);
                 return instance;
             })
             .catch(err => {
@@ -161,6 +164,7 @@ exports = module.exports = function(app) {
             .then(function(instance) {
                 console.log('got contract instance of scholarship');
                 scholarshipContractInstance = instance;
+                watchAllEvents(scholarshipContractInstance);
                 return instance;
             })
             .catch(err => {
@@ -183,6 +187,7 @@ exports = module.exports = function(app) {
             .then(function(instance) {
                 console.log('got contract instance of question');
                 questionContractInstance = instance;
+                watchAllEvents(questionContractInstance);
                 return instance;
             })
             .catch(err => {
@@ -243,4 +248,37 @@ exports = module.exports = function(app) {
             });
         }
     };
+
+    function watchAllEvents(contractInstance) {
+        // ScholarshipCreate
+        contractInstance.allEvents().watch((err, result) => {
+            let event;
+            if (!err) {
+                console.log('Captured event ' + result.event + ': ');
+                console.log(result.args);
+                event = {
+                    name: result.event,
+                    status: 'success',
+                    result: JSON.stringify(result.args),
+                    transactionHash: result.transactionHash,
+                    transactionIndex: result.transactionIndex,
+                    logIndex: result.logIndex,
+                    blockNumber: result.blockNumber,
+                };
+            } else {
+                event = {
+                    name: err.event,
+                    status: 'error',
+                    error: JSON.stringify(err),
+                };
+            }
+            app.models.event.create(event)
+                .then(res => {
+                    console.log('Logged event in DB');
+                })
+                .catch(err => {
+                    console.error('Error logging event in DB');
+                });
+        });
+    }
 };

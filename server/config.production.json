@@ -22,9 +22,9 @@
     "swagger": {
         "protocol": "https"
     },
-    "blockProducerAddress": "0x525570d42256eb6fc0bcc770f1957403c00f28a5",
+    "blockProducerAddress": "0x742ba4f0cd93b3b7876a54ef10838973ebadcf49",
     "blockProducerPassword": "0C6&7vvvv",
-    "advisoryPoolAddress": "0x81cd9f0f55f90f58b8ec25e577d12f4392b34f0a",
+    "advisoryPoolAddress": "0xe0b08da51cd16ee554f3fea1514420f67ceabfd6",
     "advisoryPoolPassword": "Imp0ss!ble",
     "adminEmail": "aakash@one0x.com",
     "apiUrl": "https://theblockchainu.com:3002"

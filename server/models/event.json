@@ -1,0 +1,38 @@
+{
+    "name": "event",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "mixins": {
+        "TimeStamp": {
+            "createdAt": "createdAt",
+            "updatedAt": "updatedAt",
+            "required": false
+        }
+    },
+    "properties": {
+        "id": {
+            "type": "string",
+            "id": true
+        },
+        "name": "string",
+        "status": "string",
+        "transactionHash": {
+            "type": "string",
+            "id": true
+        },
+        "transactionIndex": "number",
+        "logIndex": "number",
+        "blockNumber": "number",
+        "result": "string",
+        "error": "",
+        "createdAt": "",
+        "updatedAt": ""
+    },
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
+}

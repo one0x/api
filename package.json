@@ -1,5 +1,5 @@
 {
-  "name": "one0x API",
+  "name": "one0x_API",
   "version": "1.0.0",
   "main": "server/server.js",
   "engines": {
@@ -53,6 +53,6 @@
     "type": "",
     "url": ""
   },
-  "license": "MIT",
+  "license": "Private",
   "description": "one0x APIs"
 }

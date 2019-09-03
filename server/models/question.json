@@ -1,52 +1,52 @@
 {
-    "name": "question",
-    "base": "Model",
-    "idInjection": false,
-    "options": {
-        "validateUpsert": true
+  "name": "question",
+  "base": "Model",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "createdAt": "createdAt",
+      "updatedAt": "updatedAt",
+      "required": false
+    }
+  },
+  "properties": {
+    "uniqueId": {
+      "type": "string",
+      "id": true,
+      "required": true
     },
-    "mixins": {
-        "TimeStamp": {
-            "createdAt": "createdAt",
-            "updatedAt": "updatedAt",
-            "required": false
-        }
+    "communityId": {
+      "type": "string",
+      "required": true
     },
-    "properties": {
-        "uniqueId": {
-            "type": "string",
-            "id": true,
-            "required": true
-        },
-        "communityId": {
-            "type": "string",
-            "required": true
-        },
-        "peerAddress": {
-            "type": "string",
-            "required": true
-        },
-        "scholarshipId": {
-            "type": "string",
-            "required": true,
-            "default": "NA"
-        },
-        "hash": {
-            "type": "string",
-            "required": true
-        },
-        "gyan": {
-            "type": "number"
-        },
-        "topics": {
-            "type": [
-                "string"
-            ],
-            "required": true
-        }
+    "peerAddress": {
+      "type": "string",
+      "required": true
     },
-    "validations": [],
-    "relations": {},
-    "acls": [],
-    "methods": {}
+    "scholarshipId": {
+      "type": "string",
+      "required": true,
+      "default": "NA"
+    },
+    "hash": {
+      "type": "string",
+      "required": true
+    },
+    "gyan": {
+      "type": "number"
+    },
+    "topics": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
 }

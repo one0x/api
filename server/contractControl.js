@@ -1,7 +1,9 @@
 'use strict';
-var web3 = require('web3');
-var contract = require('truffle-contract');
-var net = require('net');
+let web3 = require('web3');
+let contract = require('truffle-contract');
+let net = require('net');
+let loopback = require('loopback');
+let path = require('path');
 
 exports = module.exports = function(app) {
     if (process.env.NODE_ENV === 'development') {
@@ -250,7 +252,7 @@ exports = module.exports = function(app) {
     };
 
     function watchAllEvents(contractInstance) {
-        // ScholarshipCreate
+        // Subscribe to all events of given contract
         contractInstance.allEvents().watch((err, result) => {
             let event;
             if (!err) {
@@ -272,13 +274,125 @@ exports = module.exports = function(app) {
                     error: JSON.stringify(err),
                 };
             }
+            // Save the event in local DB and link it to peer nodes
             app.models.event.create(event)
-                .then(res => {
-                    console.log('Logged event in DB');
+                .then(eventInstance => {
+                    console.log('Created event node in DB');
+                    if (result.args.partyA && result.args.partyA !== '0x0000000000000000000000000000000000000000') {
+                        eventInstance.peer.add(result.args.partyA.toLowerCase());
+                    }
+                    if (result.args.partyB && result.args.partyB !== '0x0000000000000000000000000000000000000000') {
+                        eventInstance.peer.add(result.args.partyB.toLowerCase());
+                    }
                 })
                 .catch(err => {
                     console.error('Error logging event in DB');
                 });
+
+            // Send email to both users about new balance if event is : KarmaTransfer
+            if (result.event === 'KarmaTransfer') {
+                // Send DEBIT email to sender
+                const transactionTypeDr = 'debit';
+                const transactionSymbolDr = '-';
+                const transactionAmountDr = result.args.amount;
+                const transactorAddressDr = result.args.to.toLowerCase();
+                const userEthAddressDr = result.args.from.toLowerCase();
+                let transactorNameDr, karmaBalanceDr, userNameDr;
+                app.models.protocol_peer.findById(transactorAddressDr)
+                    .then(transactorInstance => {
+                        transactorNameDr = transactorInstance.fName + ' ' + transactorInstance.lName;
+                        return app.models.protocol_peer.findById(userEthAddressDr);
+                    })
+                    .then(userInstance => {
+                        karmaBalanceDr = userInstance.karmaBalance - parseInt(transactionAmountDr, 10);
+                        userNameDr = userInstance.fName + ' ' + userInstance.lName;
+                        // Update karma balance in DB
+                        userInstance.updateAttribute('karmaBalance', karmaBalanceDr)
+                            .then(res => {
+                                console.log('Karma balance updated in DB');
+                                let emailData = {
+                                    transactorName: transactorNameDr,
+                                    userName: userNameDr,
+                                    transactionType: transactionTypeDr,
+                                    transactionSymbol: transactionSymbolDr,
+                                    transactionAmount: transactionAmountDr,
+                                    karmaBalance: karmaBalanceDr,
+                                    transactionHash: result.transactionHash,
+                                };
+                                let renderer = loopback.template(path.resolve(__dirname, 'views/karmaTransfer.ejs'));
+                                let htmlBody = renderer(emailData);
+                                loopback.Email.send({
+                                    to: userInstance.email,
+                                    from: 'one0x <noreply@mx.one0x.com>',
+                                    subject: 'Karma Wallet Update',
+                                    html: htmlBody,
+                                })
+                                    .then(function(response) {
+                                        console.log('email sent! - ' + response);
+                                    })
+                                    .catch(function(err) {
+                                        console.log('email error! - ' + err);
+                                    });
+                            })
+                            .catch(err => {
+                                console.error('Failed to update karma balance');
+                            });
+                    })
+                    .catch(err => {
+                        console.error('In DEBIT transaction, partyB not found or is a Karma Burn case');
+                    });
+
+                // Send CREDIT email to receiver
+                const transactionTypeCr = 'credit';
+                const transactionSymbolCr = '+';
+                const transactionAmountCr = result.args.amount;
+                const transactorAddressCr = result.args.from.toLowerCase();
+                const userEthAddressCr = result.args.to.toLowerCase();
+                let transactorNameCr, karmaBalanceCr, userNameCr;
+                app.models.protocol_peer.findById(transactorAddressCr)
+                    .then(transactorInstance => {
+                        transactorNameCr = transactorInstance.fName + ' ' + transactorInstance.lName;
+                        return app.models.protocol_peer.findById(userEthAddressCr);
+                    })
+                    .then(userInstance => {
+                        karmaBalanceCr = userInstance.karmaBalance + parseInt(transactionAmountCr, 10);
+                        userNameCr = userInstance.fName + ' ' + userInstance.lName;
+                        // Update karma balance in DB
+                        userInstance.updateAttribute('karmaBalance', karmaBalanceCr)
+                            .then(res => {
+                                console.log('Karma balance updated in DB');
+                                let emailData = {
+                                    transactorName: transactorNameCr,
+                                    userName: userNameCr,
+                                    transactionType: transactionTypeCr,
+                                    transactionSymbol: transactionSymbolCr,
+                                    transactionAmount: transactionAmountCr,
+                                    karmaBalance: karmaBalanceCr,
+                                    transactionHash: result.transactionHash,
+                                };
+                                let renderer = loopback.template(path.resolve(__dirname, 'views/karmaTransfer.ejs'));
+                                let htmlBody = renderer(emailData);
+                                loopback.Email.send({
+                                    to: userInstance.email,
+                                    from: 'one0x <noreply@mx.one0x.com>',
+                                    subject: 'Karma Wallet Update',
+                                    html: htmlBody,
+                                })
+                                    .then(function(response) {
+                                        console.log('email sent! - ' + response);
+                                    })
+                                    .catch(function(err) {
+                                        console.log('email error! - ' + err);
+                                    });
+                            })
+                            .catch(err => {
+                                console.error('Failed to update karma balance');
+                            });
+                    })
+                    .catch(err => {
+                        console.error('In CREDIT transaction, partyA not found or is a Karma Mint case');
+                    });
+            }
         });
     }
 };

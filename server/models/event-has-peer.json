@@ -1,12 +1,12 @@
 {
-  "name": "transaction_has_peer",
+  "name": "event_has_peer",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "neo4j": {
-    "sourceModel": "transactions",
+    "sourceModel": "event",
     "targetModel": "protocol_peer"
   },
   "properties": {
@@ -23,9 +23,9 @@
   },
   "validations": [],
   "relations": {
-    "transaction": {
+    "event": {
       "type": "belongsTo",
-      "model": "transactions",
+      "model": "event",
       "foreignKey": "sourceId"
     },
     "peer": {

@@ -1,40 +1,40 @@
 {
-    "name": "transactions",
-    "base": "PersistedModel",
-    "idInjection": true,
-    "options": {
-        "validateUpsert": true
+  "name": "transactions",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "createdAt": "createdAt",
+      "updatedAt": "updatedAt",
+      "required": false
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true
     },
-    "mixins": {
-        "TimeStamp": {
-            "createdAt": "createdAt",
-            "updatedAt": "updatedAt",
-            "required": false
-        }
+    "result": {
+      "type": "string"
     },
-    "properties": {
-        "id": {
-            "type": "string",
-            "id": true
-        },
-        "result": {
-            "type": "string"
-        },
-        "type": {
-            "type": "string",
-            "default": "user"
-        }
-    },
-    "validations": [],
-    "relations": {
-        "peer": {
-            "type": "hasMany",
-            "model": "protocol_peer",
-            "foreignKey": "sourceId",
-            "through": "transaction_has_peer",
-            "keyThrough": "targetId"
-        }
-    },
-    "acls": [],
-    "methods": {}
+    "type": {
+      "type": "string",
+      "default": "user"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "peer": {
+      "type": "hasMany",
+      "model": "protocol_peer",
+      "foreignKey": "sourceId",
+      "through": "transaction_has_peer",
+      "keyThrough": "targetId"
+    }
+  },
+  "acls": [],
+  "methods": {}
 }

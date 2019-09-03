@@ -3,8 +3,16 @@
     "base": "PersistedModel",
     "idInjection": true,
     "options": {
-        "validateUpsert": true
+        "validateUpsert": true,
+        "caseSensitiveEmail": true,
+        "emailVerificationRequired": true
     },
+    "hidden": [
+        "password",
+        "keyStore",
+        "verificationToken",
+        "verificationTokenTime"
+    ],
     "mixins": {
         "TimeStamp": {
             "createdAt": "createdAt",
@@ -16,6 +24,54 @@
         "id": {
             "type": "string",
             "id": true
+        },
+        "userId": {
+            "type": "string",
+            "required": true
+        },
+        "password": {
+            "type": "string",
+            "required": true
+        },
+        "keyStore": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string",
+            "required": true
+        },
+        "fName": {
+            "type": "string"
+        },
+        "lName": {
+            "type": "string"
+        },
+        "karmaBalance": {
+            "type": "number",
+            "default": 0
+        },
+        "gyanScore": {
+            "type": "number",
+            "default": 0
+        },
+        "country": {
+            "type": "string"
+        },
+        "currency": {
+            "type": "string"
+        },
+        "timezone": {
+            "type": "string"
+        },
+        "emailVerified": {
+            "type": "boolean",
+            "default": false
+        },
+        "verificationToken": {
+            "type": "string"
+        },
+        "verificationTokenTime": {
+            "type": "string"
         }
     },
     "validations": [],
@@ -25,6 +81,20 @@
             "model": "transactions",
             "foreignKey": "targetId",
             "through": "transaction_has_peer",
+            "keyThrough": "sourceId"
+        },
+        "events": {
+            "type": "hasMany",
+            "model": "event",
+            "foreignKey": "targetId",
+            "through": "event_has_peer",
+            "keyThrough": "sourceId"
+        },
+        "applications": {
+            "type": "hasMany",
+            "model": "application",
+            "foreignKey": "targetId",
+            "through": "application_has_peer",
             "keyThrough": "sourceId"
         }
     },

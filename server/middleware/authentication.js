@@ -2,85 +2,67 @@ let app = require('../server');
 let moment = require('moment');
 let _ = require('lodash');
 module.exports = function(options) {
-    const exemptUrls = [
-        'api/peers/forgotPassword',
-        'api/peers/resetPassword',
-        'api/transactions/ccavenueResponse',
-        'api/assessment_results/sign-certificate',
-        'api/peers/save-wallet',
-        'api/assessment_results/join-collection-success',
-        'api/assessment_results/join-collection-failure',
-        'api/assessment_results/save-wallet',
-        'api/assessment_results/karma-reward-result',
-    ];
+    let getTokenFromRequest = function(request) {
+        const headerToken = request.headers['authorization'];
 
-    const exemptModels = [
-        'container',
-        'emailSubscription',
-        'guestContact',
-        'country',
-        'currency',
-        'language',
-    ];
-
-    const getHeaderAccessToken = function(req) {
-        if (req.headers && req.headers.hasOwnProperty('access_token') && req.headers.access_token.length > 0) {
-            return req.headers.access_token;
-        } else {
-            return null;
+        if (headerToken) {
+            return getTokenFromRequestHeader(request);
         }
+
+        throw new Error('Unauthorized request: no authentication given');
     };
 
-    const getSingularName = function(plural) {
-        if (plural.substring(plural.length - 3) === 'ies') {
-            return plural.slice(0, -3) + 'y';
-        } else if (plural.substring(plural.length - 1) === 's') {
-            return plural.slice(0, -1);
-        } else {
-            return plural;
+    /**
+     * Get the token from the request header.
+     *
+     * @see http://tools.ietf.org/html/rfc6750#section-2.1
+     */
+
+    let getTokenFromRequestHeader = function(request) {
+        const token = request.headers['authorization'];
+        const matches = token.match(/Bearer\s(\S+)/);
+
+        if (!matches) {
+            throw new Error('Invalid request: malformed authorization header');
         }
+
+        return matches[1];
     };
 
-    const isSecureUrl = function(url) {
-        return _.find(exemptUrls, (exUrl) => exUrl === _.join(_.slice(url.split('/'), 1), '/').split('?')[0]) === undefined;
+    let getAccessToken = function (bearerToken) {
+        // try and get the userID from the db using the bearerToken
+        // console.log('Trying to find token with ID: ' + bearerToken);
+        return app.models.accessToken.findById(bearerToken)
+            .then(function(token) {
+                return Promise.all([
+                    token,
+                    app.models.application.findById(token.clientId),
+                    app.models.protocol_peer.findById(token.userId),
+                ]);
+            })
+            .spread(function(token, client, user) {
+                return {
+                    accessToken: token.id,
+                    accessTokenExpiresAt: moment().add(token.ttl, 'seconds').toDate(),
+                    scope: token.scopes,
+                    client: client, // with 'id' property
+                    user: user,
+                };
+            });
     };
 
     return function authenticationHandler(req, res, next) {
-        const accessToken = getHeaderAccessToken(req);
-        if (isSecureUrl(req.url)) {
-            let urlModel = getSingularName(req.url.split('/')[2].split('?')[0]);
-            const model = app.models[urlModel];
-            if (!_.find(exemptModels, (exModels) => exModels === urlModel)) {
-                // console.log('Request for model: ' + model.name + '. Access Token: ' + access_token);
-                if (accessToken !== null) {
-                    // TODO: authenticated user. Fetch his account and add it to the req object.
-                    app.models.UserToken.findById(accessToken, {include: {'peer': 'profiles'}}, function(err, tokenInstance) {
-                        if (err || tokenInstance === null) {
-                            console.log(err);
-                            res.status(401).send('Invalid authentication token. Request denied.');
-                        } else {
-                            let now = moment();
-                            if (moment(tokenInstance.createdAt).add(tokenInstance.ttl, 'seconds') < now) {
-                                // Token expired.
-                                res.status(401).send('Expired authentication token. Expiry time ' + moment(tokenInstance.createdAt).add(tokenInstance.ttl, 'seconds') + ' is less than current time ' + now);
-                            } else {
-                                req.peer = tokenInstance.user;
-                                next();
-                            }
-                        }
-                    });
-                } else {
-                    /* if (req.method === 'GET') {
-                        next();
-                    } else { */
-                        res.status(401).send('No authentication token. Request denied.');
-                    // }
-                }
-            } else {
+        const token = getTokenFromRequest(req);
+        getAccessToken(token)
+            .then(token => {
+                req.user = token.user;
+                req.client = token.client;
+                // console.log(token);
                 next();
-            }
-        } else {
-            next();
-        }
+            })
+            .catch(err => {
+                console.log(err);
+                next(err);
+            });
     };
 };

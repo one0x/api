@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>OAuth 2.0 - Consent to Authorize</title>
+</head>
+<body>
+<form action="@OAUTH_AUTHORIZE_URI@" method="GET">
+    <h1>OAuth 2.0 - Consent to Authorize</h1>
+
+    <p>The following site is requesting access to an OAuth 2.0 protected resource:</p>
+    <p><b>@OAUTH_CLIENT_COMPANY_NAME@</b></p>
+
+    <p>The client provided the following OAuth 2.0 request parameters:</p>
+    <ul>
+        <li>Client Id: @CLIENT_ID@</li>
+        <li>Redirect URI: @REDIRECT_URI@</li>
+        <li>State: @STATE@</li>
+        <li>Response Type: @RESPONSE_TYPE@</li>
+    </ul>
+
+    <p>Additional Information: @OAUTH_CUSTOM_MACRO@</p>
+
+    <p>By approving this request you will be providing
+        delegated authorization on behalf of:</p>
+    <p><b>@USERNAME@</b></p>
+
+    <p>The client provided the following extra request parameters:</p>
+    <!-- START NON-TRANSLATABLE -->
+    <ul>
+        [RPT oauthOtherParamsRepeatable]
+        <li>@OAUTH_OTHER_PARAM_REPEAT@=@OAUTH_OTHER_PARAM_VALUE_REPEAT@</li>
+        <input type="hidden" name="@OAUTH_OTHER_PARAM_REPEAT@"
+               value="@OAUTH_OTHER_PARAM_VALUE_REPEAT@" />
+        [ERPT oauthOtherParamsRepeatable]
+    </ul>
+    <!-- END NON-TRANSLATABLE -->
+
+    <p>The client requested the following token scopes
+        that have been previously approved:</p>
+    <!-- START NON-TRANSLATABLE -->
+    <ul>
+        [RPT oauthTokenScopePreapprovedRepeatable]
+        <li>@OAUTH_TOKEN_SCOPE_REPEAT@</li>
+        <input type="hidden" name="scope" value="@OAUTH_TOKEN_SCOPE_REPEAT@" />
+        [ERPT oauthTokenScopePreapprovedRepeatable]
+    </ul>
+    <!-- END NON-TRANSLATABLE -->
+
+    <p>The client requested the following token scopes
+        that have not yet been approved:</p>
+    <!-- START NON-TRANSLATABLE -->
+    [RPT oauthTokenScopeNewApprovalRepeatable]
+    <input type="checkbox" name="scope" value="@OAUTH_TOKEN_SCOPE_REPEAT@"
+           checked="checked"/><label>@OAUTH_TOKEN_SCOPE_REPEAT@</label><br />
+    [ERPT oauthTokenScopeNewApprovalRepeatable]
+    <!-- END NON-TRANSLATABLE -->
+    <br />
+
+    <p>Would you like to approve access to this scope?</p>
+    <input type="hidden" name="consent_form_verifier" value="@CONSENT_FORM_VERIFIER@" />
+
+    <!--
+        The scope parameters can be:
+        1. Requested as part of the redirect for authorization by the client
+           by appending them to the authorize URL as query string parameters,
+           and/or
+        2. If not requested by the client, and you know what authorization options
+           are valid for the protected resources being requested, you may
+           also manually prompt for them in this page template as demonstrated
+           by the following example scope's
+    -->
+    <!--
+    <table>
+        <tr>
+            <td>Scopes to be authorized:&nbsp</td>
+            <td>Scope 1</td><td><input type="checkbox" name="scope"
+                       value="token_scope_1" /></td>
+            <td>:: Scope 2</td><td><input type="checkbox" name="scope"
+                       value="token_scope_2" /></td>
+            <td>:: Scope 3</td><td><input type="checkbox" name="scope"
+                       value="token_scope_3" /></td>
+        </tr>
+    </table>
+    -->
+
+    <table>
+        <tr>
+            <td>Permit&nbsp;</td>
+            <td><input type="radio" name="trust_level" value="permit" checked /></td>
+        </tr>
+        <tr>
+            <td>Deny&nbsp;</td>
+            <td><input type="radio" name="trust_level" value="deny" /></td>
+        </tr>
+    </table>
+    <br />
+
+    <input type="submit" name="submit" value="Submit" style="width: 80px" />
+</form>
+</body>
+</html>

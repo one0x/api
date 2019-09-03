@@ -19,10 +19,10 @@
         },
         "cors": false
     },
-    "blockProducerAddress": "0x733F8aBDc60174De560c531424a189d27eB38B86",
-    "blockProducerPassword": "01fe55bd9488d71dd56d6bb8949c44fea13f4448bef763aacbe4a2638d92bd5c",
-    "advisoryPoolAddress": "0x8c46f2c9376a7Ea7937b743A269fa19b39f2A1D2",
-    "advisoryPoolPassword": "f390ab8ace899ce6d0d6213eaf76b56e91e89306882b31115935f6b3f121c83a",
+    "blockProducerAddress": "0xdD8F631C3581c0183aEdc3723275Cab76D9E747E",
+    "blockProducerPassword": "a1a2b4c030e793ec13ddd53860bf2dbc912f1b714cb41f3c26bace8cf15dafc1",
+    "advisoryPoolAddress": "0x2040EBA6f5caFC29FDd1b8364022C678515c4822",
+    "advisoryPoolPassword": "74d05457141b097006e452023f6db81ab6b85d898ac02090973e2b4a4900640c",
     "adminEmail": "aakash@one0x.com",
     "apiUrl": "http://localhost:3000"
 }

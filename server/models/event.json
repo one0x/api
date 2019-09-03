@@ -1,38 +1,58 @@
 {
-    "name": "event",
-    "base": "PersistedModel",
-    "idInjection": true,
-    "options": {
-        "validateUpsert": true
+  "name": "event",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "createdAt": "createdAt",
+      "updatedAt": "updatedAt",
+      "required": false
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true
     },
-    "mixins": {
-        "TimeStamp": {
-            "createdAt": "createdAt",
-            "updatedAt": "updatedAt",
-            "required": false
-        }
+    "name": {
+      "type": "string"
     },
-    "properties": {
-        "id": {
-            "type": "string",
-            "id": true
-        },
-        "name": "string",
-        "status": "string",
-        "transactionHash": {
-            "type": "string",
-            "id": true
-        },
-        "transactionIndex": "number",
-        "logIndex": "number",
-        "blockNumber": "number",
-        "result": "string",
-        "error": "",
-        "createdAt": "",
-        "updatedAt": ""
+    "status": {
+      "type": "string"
     },
-    "validations": [],
-    "relations": {},
-    "acls": [],
-    "methods": {}
+    "transactionHash": {
+      "type": "string",
+      "id": true
+    },
+    "transactionIndex": {
+      "type": "number"
+    },
+    "logIndex": {
+      "type": "number"
+    },
+    "blockNumber": {
+      "type": "number"
+    },
+    "result": {
+      "type": "string"
+    },
+    "error": false,
+    "createdAt": false,
+    "updatedAt": false
+  },
+  "validations": [],
+  "relations": {
+    "peer": {
+      "type": "hasMany",
+      "model": "protocol_peer",
+      "foreignKey": "sourceId",
+      "through": "event_has_peer",
+      "keyThrough": "targetId"
+    }
+  },
+  "acls": [],
+  "methods": {}
 }

@@ -1,0 +1,39 @@
+{
+    "name": "application_has_peer",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "neo4j": {
+        "sourceModel": "application",
+        "targetModel": "protocol_peer"
+    },
+    "properties": {
+        "id": {
+            "type": "string",
+            "id": true
+        },
+        "sourceId": {
+            "type": "string"
+        },
+        "targetId": {
+            "type": "string"
+        }
+    },
+    "validations": [],
+    "relations": {
+        "application": {
+            "type": "belongsTo",
+            "model": "application",
+            "foreignKey": "sourceId"
+        },
+        "peer": {
+            "type": "belongsTo",
+            "model": "protocol_peer",
+            "foreignKey": "targetId"
+        }
+    },
+    "acls": [],
+    "methods": {}
+}

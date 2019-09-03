@@ -8,15 +8,29 @@
 <div style="font-family: Helvetica; padding: 9%; background-color: #ffffff; color: #333333; font-size: 17px;">
     <!-- Header -->
     <div style="vertical-align: middle; ">
-        <img src="https://one0x.com/assets/images/one0x_black.png" width="auto" height="35px" >  <span style="position: relative; top: -14px; color: #ff5b5f"></span>
+        <img src="https://one0x.com/assets/images/one0x_logo.png" width="auto" height="35px" >  <span style="position: relative; top: -14px; color: #ff5b5f"></span>
     </div>
     <!-- Title -->
-    <div style="font-weight: 800; font-size: 30px; margin-top: 40px;">
-        Karma Receipt
+    <div style="font-weight: 800; font-size: 30px; margin-top: 40px; color: #366078;">
+        Karma Wallet
     </div>
     <!-- Body -->
     <div style="font-size: 17px; margin-top: 25px;">
-        Your Karma
+        Hi <%= userName %>,
+        <br><br>
+        <b><%= transactorName %></b> has made a <%= transactionType %> to your wallet.
+        <div style="font-size: 25px; font-weight: 700; padding: 10px 20px; background: #f5f5f5; width: fit-content; border-radius: 4px; margin-bottom: 10px; margin-top: 20px;">
+            <%= transactionSymbol %> <%= transactionAmount %> Karma
+        </div>
+        <div style="margin-top: 25px;">
+            Your new balance is <b><%= karmaBalance %> Karma</b>.
+        </div>
+        <div style="margin-top: 25px; color: #777; font-size: 14px;">
+            When you pay with Karma for your courses, you can save upto 50% with cashbacks and stand a chance to win scholarships!
+        </div>
+        <div style="margin-top: 25px; color: #777; font-size: 11px;">
+            <i>This transaction was securely recorded with ID: <%= transactionHash %></i>
+        </div>
     </div>
     <!-- Signature -->
     <div style="font-size: 17px; margin-top: 30px; line-height: 24px;">
@@ -29,7 +43,7 @@
     <div style="font-size: 13px; color: #bbbbbb; margin-top: 30px; font-weight: 300">
         Sent with <span style="font-size: 11px;">&hearts;</span> from one0x
         <br><br>
-        one0x, Inc., 4580 Automall Pkwy, Fremont, CA 94538
+        one0x Inc. 4580 Automall Pkwy, Fremont, CA 94538
     </div>
 </div>
 </body>

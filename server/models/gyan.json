@@ -1,47 +1,47 @@
 {
-    "name": "gyan",
-    "plural": "gyan",
-    "base": "Model",
-    "idInjection": true,
-    "options": {
-        "validateUpsert": true
+  "name": "gyan",
+  "plural": "gyan",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "createdAt": "createdAt",
+      "updatedAt": "updatedAt",
+      "required": false
+    }
+  },
+  "properties": {
+    "uniqueId": {
+      "type": "string",
+      "id": true,
+      "required": true
     },
-    "mixins": {
-        "TimeStamp": {
-            "createdAt": "createdAt",
-            "updatedAt": "updatedAt",
-            "required": false
-        }
+    "name": {
+      "type": "string",
+      "id": true,
+      "required": true
     },
-    "properties": {
-        "uniqueId": {
-            "type": "string",
-            "id": true,
-            "required": true
-        },
-        "name": {
-            "type": "string",
-            "id": true,
-            "required": true
-        },
-        "symbol": {
-            "type": "string",
-            "id": true,
-            "required": true
-        },
-        "totalSupply": {
-            "type": "number",
-            "id": true,
-            "required": true
-        },
-        "balance": {
-            "type": "number",
-            "id": true,
-            "required": true
-        }
+    "symbol": {
+      "type": "string",
+      "id": true,
+      "required": true
     },
-    "validations": [],
-    "relations": {},
-    "acls": [],
-    "methods": {}
+    "totalSupply": {
+      "type": "number",
+      "id": true,
+      "required": true
+    },
+    "balance": {
+      "type": "number",
+      "id": true,
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
 }

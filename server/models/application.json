@@ -1,0 +1,21 @@
+{
+    "name": "application",
+    "base": "Application",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "properties": {},
+    "validations": [],
+    "relations": {
+        "peers": {
+            "type": "hasMany",
+            "model": "protocol_peer",
+            "foreignKey": "sourceId",
+            "through": "application_has_peer",
+            "keyThrough": "targetId"
+        }
+    },
+    "acls": [],
+    "methods": {}
+}

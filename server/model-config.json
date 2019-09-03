@@ -1,68 +1,92 @@
 {
-  "_meta": {
-    "sources": [
-      "loopback/common/models",
-      "loopback/server/models",
-      "../common/models",
-      "./models"
-    ],
-    "mixins": [
-      "loopback/common/mixins",
-      "../node_modules/loopback-ds-timestamp-mixin",
-      "loopback/server/mixins",
-      "../common/mixins",
-      "./mixins"
-    ]
-  },
-  "Email": {
-    "dataSource": "mailgun"
-  },
-  "collection": {
-    "dataSource": null,
-    "public": true
-  },
-  "karma": {
-    "dataSource": null,
-    "public": true
-  },
-  "gyan": {
-    "dataSource": null,
-    "public": true
-  },
-  "peer": {
-    "dataSource": null,
-    "public": true
-  },
-  "scholarship": {
-    "dataSource": null,
-    "public": true
-  },
-  "util": {
-    "dataSource": null,
-    "public": true
-  },
-  "protocol_peer": {
-    "dataSource": "neo4j",
-    "public": false
-  },
-  "transactions": {
-    "dataSource": "neo4j",
-    "public": true
-  },
-  "transaction_has_peer": {
-    "dataSource": "neo4j-cypher",
-    "public": false
-  },
-  "question": {
-    "dataSource": null,
-    "public": true
-  },
-  "answer": {
-    "dataSource": null,
-    "public": true
-  },
-  "event": {
-    "dataSource": "neo4j",
-    "public": true
-  }
+    "_meta": {
+        "sources": [
+            "loopback/common/models",
+            "loopback/server/models",
+            "../common/models",
+            "./models"
+        ],
+        "mixins": [
+            "loopback/common/mixins",
+            "../node_modules/loopback-ds-timestamp-mixin",
+            "loopback/server/mixins",
+            "../common/mixins",
+            "./mixins"
+        ]
+    },
+    "Email": {
+        "dataSource": "mailgun"
+    },
+    "collection": {
+        "dataSource": null,
+        "public": true
+    },
+    "karma": {
+        "dataSource": null,
+        "public": true
+    },
+    "gyan": {
+        "dataSource": null,
+        "public": true
+    },
+    "peer": {
+        "dataSource": null,
+        "public": true
+    },
+    "scholarship": {
+        "dataSource": null,
+        "public": true
+    },
+    "util": {
+        "dataSource": null,
+        "public": true
+    },
+    "protocol_peer": {
+        "dataSource": "neo4j",
+        "public": true
+    },
+    "transactions": {
+        "dataSource": "neo4j",
+        "public": true
+    },
+    "transaction_has_peer": {
+        "dataSource": "neo4j-cypher",
+        "public": false
+    },
+    "question": {
+        "dataSource": null,
+        "public": true
+    },
+    "answer": {
+        "dataSource": null,
+        "public": true
+    },
+    "event": {
+        "dataSource": "neo4j",
+        "public": true
+    },
+    "event_has_peer": {
+        "dataSource": "neo4j-cypher",
+        "public": false
+    },
+    "authorizationCode": {
+        "dataSource": "neo4j",
+        "public": false
+    },
+    "accessToken": {
+        "dataSource": "neo4j",
+        "public": false
+    },
+    "application": {
+        "dataSource": "neo4j",
+        "public": true
+    },
+    "refreshToken": {
+        "dataSource": "neo4j",
+        "public": false
+    },
+    "application_has_peer": {
+        "dataSource": "neo4j-cypher",
+        "public": false
+    }
 }
